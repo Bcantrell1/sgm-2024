@@ -3,7 +3,7 @@ import { useSession } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-const allowedEmails = [process.env.NEXT_PUBLIC_ALLOWED_EMAIL1, process.env.NEXT_PUBLIC_ALLOWED_EMAIL2];
+const allowedEmails = ['bribri546@gmail.com', 'samsonsgm@gmail.com'];
 
 export function useAuth() {
   const { data: session, status } = useSession();
