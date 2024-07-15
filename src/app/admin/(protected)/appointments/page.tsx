@@ -1,5 +1,4 @@
 'use client';
-
 import { db } from '@/firebase/clientApp';
 import { format } from 'date-fns';
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";

@@ -57,7 +57,7 @@ const Carousel = () => {
 
   return (
     <div className="relative w-full">
-      <div className="relative pt-[46.25%]"> {/* 16:9 aspect ratio */}
+      <div className="relative pt-[46.25%]">
         {images.map((image, index) => (
           <div
             key={image.id}

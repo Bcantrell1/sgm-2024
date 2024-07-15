@@ -18,7 +18,7 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images, onImageClick }) => {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
       {images.map((img) => (
         <div key={img.id} className="border rounded-lg overflow-hidden shadow-md">
-          <div className="relative pt-[66.66%]"> {/* 3:2 aspect ratio */}
+          <div className="relative pt-[66.66%]">
             <Image
               src={img.url}
               alt={img.name}

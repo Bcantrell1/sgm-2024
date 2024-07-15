@@ -1,5 +1,4 @@
 'use client';
-
 import { signOut, useSession } from 'next-auth/react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
@@ -31,9 +30,6 @@ export default function Header() {
             SGM
           </Link>
           <div className="hidden md:flex space-x-4 items-center">
-            <Link href="/about">About</Link>
-            <Link href="/services">Services</Link>
-            <Link href="/portfolio">Portfolio</Link>
             <Link href="/contact">Contact</Link>
             {isAuthorized && (
               <Link href="/admin" className="bg-white text-green-600 px-3 py-1 rounded">

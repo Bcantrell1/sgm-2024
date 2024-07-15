@@ -13,17 +13,14 @@ export default function Dashboard() {
 
   useEffect(() => {
     const fetchCounts = async () => {
-      // Fetch client requests count
       const clientRequestsQuery = query(collection(db, 'clientRequests'), where('status', '==', 'pending'));
       const clientRequestsSnapshot = await getDocs(clientRequestsQuery);
       setClientRequestsCount(clientRequestsSnapshot.size);
 
-      // Fetch active jobs count
       const activeJobsQuery = query(collection(db, 'jobs'), where('status', '!=', 'Completed'));
       const activeJobsSnapshot = await getDocs(activeJobsQuery);
       setActiveJobsCount(activeJobsSnapshot.size);
 
-      // Fetch upcoming appointments count
       const upcomingAppointmentsQuery = query(collection(db, 'appointments'), where('status', '==', 'Scheduled'));
       const upcomingAppointmentsSnapshot = await getDocs(upcomingAppointmentsQuery);
       setUpcomingAppointmentsCount(upcomingAppointmentsSnapshot.size);

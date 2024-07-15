@@ -32,14 +32,11 @@ export default function ImageCleanup() {
 
   const validateAndRemoveImage = async (image: CarouselImage) => {
     try {
-      // Check if image exists in Storage
       const imageRef = ref(storage, image.url);
       await getDownloadURL(imageRef);
       
-      // If we get here, the image exists, so we don't remove it
       alert('Image is valid and accessible.');
     } catch (error) {
-      // Image doesn't exist in Storage, so we remove it from Firestore
       await deleteDoc(doc(db, 'carouselImages', image.id));
       setImages(images.filter(img => img.id !== image.id));
       alert('Invalid image removed from database.');
