@@ -30,6 +30,7 @@ export default function Header() {
             SGM
           </Link>
           <div className="hidden md:flex space-x-4 items-center">
+            <Link href="/blog">Blog</Link>
             <Link href="/contact">Contact</Link>
             {isAuthorized && (
               <Link href="/admin" className="bg-white text-green-600 px-3 py-1 rounded">
@@ -75,9 +76,7 @@ export default function Header() {
         </div>
         {isMenuOpen && (
           <div className="mt-4 md:hidden">
-            <Link href="/about" className="block py-2">About</Link>
-            <Link href="/services" className="block py-2">Services</Link>
-            <Link href="/portfolio" className="block py-2">Portfolio</Link>
+            <Link href="/blog" className="block py-2">Blog</Link>
             <Link href="/contact" className="block py-2">Contact</Link>
             {isAuthorized && (
               <Link href="/admin" className="block py-2 text-green-200">

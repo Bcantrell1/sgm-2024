@@ -50,7 +50,6 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = 128 }) => {
           height: 100%;
         }
         .pl__ring {
-          stroke: hsla(var(--hue),10%,10%,0.1);
           transition: stroke 0.3s;
         }
         .pl__worm {
@@ -61,9 +60,6 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({ size = 128 }) => {
           .loading-spinner {
             --bg: hsl(var(--hue),10%,10%);
             --fg: hsl(var(--hue),10%,90%);
-          }
-          .pl__ring {
-            stroke: hsla(var(--hue),10%,90%,0.7);
           }
         }
         @keyframes bump {

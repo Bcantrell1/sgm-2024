@@ -8,15 +8,15 @@ interface AuthWrapperProps {
 }
 
 const LoadingOverlay = () => (
-  <div className="flex items-center justify-center">
-		<LoadingSpinner size={64} />
+  <div className="h-screen flex items-center justify-center">
+    <LoadingSpinner />
   </div>
 );
 
 export const AuthWrapper: React.FC<AuthWrapperProps> = ({ children }) => {
   const { isAuthorized, isLoading } = useAuth();
 
-  if (isLoading) {
+  if (isLoading || isAuthorized === null) {
     return <LoadingOverlay />;
   }
 

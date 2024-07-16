@@ -1,40 +1,29 @@
 'use client';
-import { db } from '@/firebase/clientApp';
+
+import { CarouselImage } from '@/lib/fetchCarouselItems';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import NextImage from 'next/image';
 import { useCallback, useEffect, useState } from 'react';
-import LoadingSpinner from './LoadingSpinner';
+import LoadingSpinner from '../LoadingSpinner';
 
-interface CarouselImage {
-  id: string;
-  url: string;
-  name: string;
+interface CarouselProps {
+  imagesPromise: Promise<CarouselImage[]>;
 }
 
-const Carousel = () => {
+const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
   const [images, setImages] = useState<CarouselImage[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
   const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
+  const [isLoading, setIsLoading] = useState(true);
+  const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
-    const q = query(collection(db, 'carouselImages'), orderBy('createdAt', 'desc'));
-    const unsubscribe = onSnapshot(q, {includeMetadataChanges: true}, (querySnapshot) => {
-			console.log('Snapshot received, document count:', querySnapshot.size);
-      const imagesData: CarouselImage[] = [];
-      querySnapshot.forEach((doc) => {
-        imagesData.push({ id: doc.id, ...doc.data() } as CarouselImage);
-      });
-      setImages(imagesData);
+    setIsClient(true);
+    imagesPromise.then((fetchedImages) => {
+      setImages(fetchedImages);
       setIsLoading(false);
     });
-
-    return () => {
-			unsubscribe();
-			setImages([]);
-		}
-  }, []);
+  }, [imagesPromise]);
 
   const nextSlide = useCallback(() => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -53,7 +42,19 @@ const Carousel = () => {
     return () => clearInterval(timer);
   }, [nextSlide]);
 
-  if (isLoading) return null;
+  if (!isClient || isLoading) {
+    return (
+      <div className="relative w-full" style={{ paddingTop: '46.25%' }}>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <LoadingSpinner />
+        </div>
+      </div>
+    );
+  }
+
+  if (images.length === 0) {
+    return <>No images available</>;
+  }
 
   return (
     <div className="relative w-full">
@@ -66,7 +67,7 @@ const Carousel = () => {
             }`}
           >
             {!loadedImages.has(image.id) && (
-              <div className="absolute inset-0 flex items-center justify-center bg-gray-200">
+              <div className="absolute inset-0 flex items-center justify-center">
                 <LoadingSpinner />
               </div>
             )}
@@ -81,16 +82,16 @@ const Carousel = () => {
           </div>
         ))}
       </div>
-      <button 
-        onClick={prevSlide} 
-        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 text-gray-800 p-2 rounded-full hover:bg-opacity-75 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+      <button
+        onClick={prevSlide}
+        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 text-gray-800 p-2 rounded-full hover:bg-opacity-75 transition-all"
         aria-label="Previous image"
       >
         <ChevronLeftIcon className="w-6 h-6" />
       </button>
-      <button 
-        onClick={nextSlide} 
-        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 text-gray-800 p-2 rounded-full hover:bg-opacity-75 transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+      <button
+        onClick={nextSlide}
+        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 text-gray-800 p-2 rounded-full hover:bg-opacity-75 transition-all"
         aria-label="Next image"
       >
         <ChevronRightIcon className="w-6 h-6" />

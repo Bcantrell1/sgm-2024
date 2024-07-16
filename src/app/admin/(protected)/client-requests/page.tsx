@@ -3,7 +3,7 @@ import { db } from '@/firebase/clientApp';
 import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import "react-datepicker/dist/react-datepicker.css";
-import ClientRequestList from './ClientRequestList';
+import ClientRequestList from '../../../components/admin/client-requests/ClientRequestList';
 
 interface ClientRequest {
   id: string;

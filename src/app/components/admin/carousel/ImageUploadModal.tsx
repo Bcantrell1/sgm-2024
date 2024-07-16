@@ -1,24 +1,20 @@
 'use client';
+import { CarouselImage } from '@/lib/fetchCarouselImages';
+import { handleDelete, handleUpload } from '@/utils/imageUtils';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Modal from 'react-modal';
 import ImagePreview from './ImagePreview';
-import { handleDelete, handleUpload } from './ImageUtils';
-
-interface CarouselImage {
-  id: string;
-  url: string;
-  name: string;
-}
 
 interface ImageUploadModalProps {
   isOpen: boolean;
   onClose: () => void;
   selectedImage: CarouselImage | null;
+  onImageChange: (newImages: CarouselImage[]) => void;
 }
 
-const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, selectedImage }) => {
+const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, selectedImage, onImageChange }) => {
   const [newImage, setNewImage] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
 
@@ -44,9 +40,27 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, se
     }
   }, [newImage]);
 
-  const handleImageUpload = () => {
+  const handleImageUpload = async () => {
     if (newImage) {
-      handleUpload(newImage, onClose);
+      try {
+        const updatedImages = await handleUpload(newImage);
+        onImageChange(updatedImages);
+        onClose();
+      } catch (error) {
+        alert('Failed to upload image.');
+      }
+    }
+  };
+
+  const handleImageDelete = async () => {
+    if (selectedImage) {
+      try {
+        const updatedImages = await handleDelete(selectedImage);
+        onImageChange(updatedImages);
+        onClose();
+      } catch (error) {
+        alert('Failed to delete image.');
+      }
     }
   };
 
@@ -57,13 +71,13 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, se
       contentLabel="Image Modal"
       className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white p-6 rounded-lg shadow-xl max-w-3xl w-full max-h-[90vh] overflow-y-auto"
       overlayClassName="fixed inset-0 z-10 bg-black bg-opacity-75"
-			ariaHideApp={false}
+      ariaHideApp={false}
     >
       <div className="flex flex-col items-center">
         {selectedImage ? (
           <ImagePreview
             image={selectedImage}
-            onDelete={() => handleDelete(selectedImage, onClose)}
+            onDelete={handleImageDelete}
           />
         ) : (
           <div className="w-full">

@@ -1,33 +1,21 @@
 'use client';
-import { db } from '@/firebase/clientApp';
-import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
+import { CarouselImage } from '@/lib/fetchCarouselImages';
 import React, { useEffect, useState } from 'react';
-import ImageGrid from './carousel/ImageGrid';
-import ImageUploadModal from './carousel/ImageUploadModal';
+import ImageGrid from './ImageGrid';
+import ImageUploadModal from './ImageUploadModal';
 
-interface CarouselImage {
-  id: string;
-  url: string;
-  name: string;
+interface CaroImageUploadProps {
+  imagesPromise: Promise<CarouselImage[]>;
 }
 
-const AdminImageUpload: React.FC = () => {
+const CaroImageUpload: React.FC<CaroImageUploadProps> = ({ imagesPromise }) => {
   const [images, setImages] = useState<CarouselImage[]>([]);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState<CarouselImage | null>(null);
 
   useEffect(() => {
-    const q = query(collection(db, 'carouselImages'), orderBy('createdAt', 'desc'));
-    const unsubscribe = onSnapshot(q, {includeMetadataChanges: true}, (querySnapshot) => {
-      const imagesData: CarouselImage[] = [];
-      querySnapshot.forEach((doc) => {
-        imagesData.push({ id: doc.id, ...doc.data() } as CarouselImage);
-      });
-      setImages(imagesData);
-    });
-
-    return () => unsubscribe();
-  }, []);
+    imagesPromise.then(setImages);
+  }, [imagesPromise]);
 
   const openModal = (image?: CarouselImage) => {
     setSelectedImage(image || null);
@@ -37,6 +25,10 @@ const AdminImageUpload: React.FC = () => {
   const closeModal = () => {
     setModalIsOpen(false);
     setSelectedImage(null);
+  };
+
+  const handleImageChange = (newImages: CarouselImage[]) => {
+    setImages(newImages);
   };
 
   return (
@@ -49,9 +41,10 @@ const AdminImageUpload: React.FC = () => {
         isOpen={modalIsOpen}
         onClose={closeModal}
         selectedImage={selectedImage}
+        onImageChange={handleImageChange}
       />
     </div>
   );
 };
 
-export default AdminImageUpload;
+export default CaroImageUpload;

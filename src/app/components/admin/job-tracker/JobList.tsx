@@ -1,20 +1,17 @@
+import { Job } from '@/lib/fetchJobs';
+import React from 'react';
 import JobItem from './JobItem';
-
-interface Job {
-  id: string;
-  client: string;
-  project: string;
-  status: 'Not Started' | 'In Progress' | 'Completed';
-  startDate: string;
-  estimatedCompletion: string;
-}
 
 interface JobListProps {
   jobs: Job[];
   onStatusChange: (id: string, newStatus: Job['status']) => Promise<void>;
 }
 
-export default function JobList({ jobs, onStatusChange }: JobListProps) {
+const JobList: React.FC<JobListProps> = ({ jobs, onStatusChange }) => {
+  if (jobs.length === 0) {
+    return <div>No jobs available.</div>;
+  }
+
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-md">
       <ul className="divide-y divide-gray-200">
@@ -24,4 +21,6 @@ export default function JobList({ jobs, onStatusChange }: JobListProps) {
       </ul>
     </div>
   );
-}
+};
+
+export default JobList;

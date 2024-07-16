@@ -1,10 +1,9 @@
 'use client';
 import { AuthWrapper } from '@/app/components/AuthWrapper';
-import LoadingSpinner from '@/app/components/LoadingSpinner';
 import { db } from '@/firebase/clientApp';
 import { collection, getDocs, query, where } from 'firebase/firestore';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
+import DashboardCard from '../../../components/admin/dashboard/DashboardCard';
 
 export default function Dashboard() {
   const [clientRequestsCount, setClientRequestsCount] = useState<number | null>(null);
@@ -30,7 +29,6 @@ export default function Dashboard() {
   }, []);
 
   return (
-		<AuthWrapper>
     <div>
       <h1 className="text-3xl font-semibold text-gray-900 mb-6">Dashboard Overview</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -54,28 +52,5 @@ export default function Dashboard() {
         />
       </div>
     </div>
-		</AuthWrapper>
-  );
-}
-
-function DashboardCard({ title, count, link, isLoading }: { 
-  title: string; 
-  count: number | null; 
-  link: string;
-  isLoading: boolean;
-}) {
-  return (
-    <Link href={link}>
-      <div className="bg-white p-6 rounded-lg h-44 flex flex-col justify-between shadow-md hover:shadow-lg transition-shadow duration-300">
-        <h2 className="text-2xl text-center font-semibold mb-2 text-gray-800">{title}</h2>
-        {isLoading ? (
-          <div className="h-full flex justify-center items-center relative w-full">
-            <LoadingSpinner size={64} />
-          </div>
-        ) : (
-          <p className="text-7xl text-center font-bold text-blue-600">{count}</p>
-        )}
-      </div>
-    </Link>
   );
 }

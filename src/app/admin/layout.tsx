@@ -1,4 +1,5 @@
 import { ReactNode } from 'react';
+import { AuthWrapper } from '../components/AuthWrapper';
 
 export default function AdminLayout({ children }: { children: ReactNode }) {
   return (

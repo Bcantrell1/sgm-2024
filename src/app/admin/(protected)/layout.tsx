@@ -47,11 +47,18 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
         { href: '/admin/image-upload', label: 'Image Upload' },
         { href: '/admin/image-cleanup', label: 'Image Cleanup' },
       ]
-    }
+    },
+		{
+			title: 'Blog Management',
+			items: [
+				{ href: '/admin/blog-posts', label: 'Blog Posts' },
+				{ href: '/admin/create-post', label: 'Create Post' },
+			]
+		}
   ];
 
   return (
-    <AuthWrapper>
+		<AuthWrapper>
       <div className="relative min-h-screen bg-gray-100 md:flex">
         <button
           className="md:hidden fixed bottom-0 left-0 z-20 p-2 bg-green-600 text-white"
@@ -104,6 +111,6 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           ></div>
         )}
       </div>
-    </AuthWrapper>
+		</AuthWrapper>
   );
 }

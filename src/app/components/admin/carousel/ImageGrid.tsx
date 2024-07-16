@@ -1,12 +1,7 @@
 'use client';
+import { CarouselImage } from '@/lib/fetchCarouselImages';
 import Image from 'next/image';
 import React from 'react';
-
-interface CarouselImage {
-  id: string;
-  url: string;
-  name: string;
-}
 
 interface ImageGridProps {
   images: CarouselImage[];

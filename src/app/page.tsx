@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import Carousel from './components/Carousel'
+import CarouselWrapper from './components/carousel/CarouselWrapper'
 
 export default function Home() {
   return (
@@ -9,7 +9,7 @@ export default function Home() {
       <Link href="/contact" className="bg-green-600 text-white px-4 inline-block py-2 rounded hover:bg-green-700">
         Get a Quote
       </Link>
-			<Carousel />
+			<CarouselWrapper/>
     </div>
   )
 }
