@@ -23,14 +23,14 @@ export default function AdminLogin() {
   }
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <div className="p-6 max-w-sm w-full bg-white shadow-md rounded-md">
-        <h1 className="text-2xl font-semibold text-center text-gray-700 mb-6">Admin Login</h1>
+    <div className="flex items-center justify-center flex-1">
+      <div className="p-6 max-w-sm w-full rounded-md">
+        <h1 className="text-2xl font-semibold text-center text-neu-green mb-6">Admin Login</h1>
         <button
           onClick={() => signIn('google')}
-          className="w-full px-4 py-2 tracking-wide text-white transition-colors duration-200 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:bg-blue-400 focus:ring focus:ring-blue-300 focus:ring-opacity-50"
+          className="neu-button-green w-full"
         >
-          Sign in with Google
+          Sign in
         </button>
       </div>
     </div>

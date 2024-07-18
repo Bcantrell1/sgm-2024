@@ -7,13 +7,11 @@ export default async function ImageUpload() {
   const imagesPromise = fetchCarouselImages();
 
   return (
-    <div className="p-4 sm:p-6">
-      <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4 sm:mb-6">Carousel Image Manager</h1>
-      <div className="bg-white text-gray-800 shadow overflow-hidden sm:rounded-md">
-        <Suspense fallback={<LoadingSpinner size={64} />}>
-          <CaroImageUpload imagesPromise={imagesPromise} />
-        </Suspense>
-      </div>
+    <div className="py-4 sm:py-6">
+      <h1 className="text-2xl sm:text-3xl font-semibold text-gray-300 mb-4 sm:mb-6">Carousel Image Manager</h1>
+      <Suspense fallback={<LoadingSpinner size={64} />}>
+        <CaroImageUpload imagesPromise={imagesPromise} />
+      </Suspense>
     </div>
   );
 }

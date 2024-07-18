@@ -1,21 +1,11 @@
 'use client';
-import { db } from '@/firebase/clientApp';
-import { addDoc, collection, deleteDoc, doc, getDocs, onSnapshot, query, updateDoc, where } from "firebase/firestore";
 import { useEffect, useState } from 'react';
+import { db } from '@/firebase/clientApp';
+import { addDoc, collection, deleteDoc, doc, getDocs, query, updateDoc, where } from "firebase/firestore";
 import "react-datepicker/dist/react-datepicker.css";
 import ClientRequestList from '../../../components/admin/client-requests/ClientRequestList';
-
-interface ClientRequest {
-  id: string;
-  name: string;
-  number: string;
-  email: string;
-  workType: string;
-  hasPets?: boolean;
-  message: string;
-  date: string;
-  status: 'pending' | 'accepted' | 'rejected';
-}
+import { ClientRequest } from '@/types/ClientRequest';
+import { fetchClientRequests } from '@/lib/fetchClientRequests';
 
 export default function ClientRequests() {
   const [requests, setRequests] = useState<ClientRequest[]>([]);
@@ -23,15 +13,11 @@ export default function ClientRequests() {
   const [selectedRequestId, setSelectedRequestId] = useState<string | null>(null);
 
   useEffect(() => {
-    const q = query(collection(db, "clientRequests"));
-    const unsubscribe = onSnapshot(q, (querySnapshot) => {
-      const requestsData: ClientRequest[] = [];
-      querySnapshot.forEach((doc) => {
-        requestsData.push({ id: doc.id, ...doc.data() } as ClientRequest);
-      });
-      setRequests(requestsData);
-    });
-    return () => unsubscribe();
+    const loadRequests = async () => {
+      const fetchedRequests = await fetchClientRequests();
+      setRequests(fetchedRequests);
+    };
+    loadRequests();
   }, []);
 
   const handleStatusChange = async (id: string, newStatus: 'accepted' | 'rejected') => {
@@ -39,6 +25,7 @@ export default function ClientRequests() {
       setSelectedRequestId(id);
     } else {
       await updateDoc(doc(db, "clientRequests", id), { status: newStatus });
+      setRequests(await fetchClientRequests());
     }
   };
 
@@ -72,6 +59,7 @@ export default function ClientRequests() {
 
         setSelectedRequestId(null);
         setSelectedDate(null);
+        setRequests(await fetchClientRequests());
       }
     }
   };
@@ -90,6 +78,8 @@ export default function ClientRequests() {
         await deleteDoc(doc(db, "appointments", appointmentDoc.id));
       });
     });
+
+    setRequests(await fetchClientRequests());
   };
 
   const handleDateChange = (date: Date | null) => {
@@ -97,8 +87,8 @@ export default function ClientRequests() {
   };
 
   return (
-    <div className="p-4 sm:p-6">
-      <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4 sm:mb-6">Client Requests</h1>
+    <div className="py-4 sm:py-6">
+      <h1 className="text-2xl sm:text-3xl font-semibold text-gray-300 mb-4 sm:mb-6">Client Requests</h1>
       <ClientRequestList
         requests={requests}
         selectedRequestId={selectedRequestId}

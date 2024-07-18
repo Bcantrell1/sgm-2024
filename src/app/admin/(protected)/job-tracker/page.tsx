@@ -8,7 +8,7 @@ export default async function JobTrackerPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold text-gray-900 mb-6">Job Tracker</h1>
+      <h1 className="text-3xl font-semibold text-gray-300 mb-6">Job Tracker</h1>
       <Suspense fallback={<LoadingSpinner size={64} />}>
         <JobTrackerContent jobsPromise={jobsPromise} />
       </Suspense>

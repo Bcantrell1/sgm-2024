@@ -28,23 +28,23 @@ export default function Appointments() {
   }, []);
 
   return (
-    <div className="p-4 sm:p-6">
-      <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4 sm:mb-6">Upcoming Appointments</h1>
-      <div className="bg-white shadow overflow-hidden sm:rounded-md">
-        <ul className="divide-y divide-gray-200">
+    <div className="py-4 sm:py-6 bg-neu-base">
+      <h1 className="text-2xl sm:text-3xl font-semibold text-gray-300 mb-4 sm:mb-6">Appointments</h1>
+      <div className="bg-neu-base shadow-neumorphic rounded-xl overflow-hidden">
+        <ul className="divide-y divide-neu-light">
           {appointments.map((appointment) => (
-            <li key={appointment.id} className="px-4 py-4 sm:px-6">
+            <li key={appointment.id} className="px-6 py-6">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-                <p className="text-sm font-medium text-indigo-600 truncate">{appointment.client}</p>
+                <p className="text-sm font-medium text-neu-green truncate">{appointment.client}</p>
                 <div className="ml-2 flex-shrink-0 flex">
-                  <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
+                  <p className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-neu-light text-neu-green">
                     {appointment.type}
                   </p>
                 </div>
               </div>
               <div className="mt-2 sm:flex sm:justify-between">
                 <div className="sm:flex">
-                  <p className="flex items-center text-sm text-gray-500">
+                  <p className="flex items-center text-sm text-gray-300">
                     {format(new Date(appointment.date), 'MMMM dd, yyyy')} at {format(new Date(appointment.date), 'hh:mm a')}
                   </p>
                 </div>

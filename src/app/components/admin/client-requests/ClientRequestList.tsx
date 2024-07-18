@@ -34,8 +34,8 @@ export default function ClientRequestList({
   onSelectRequest
 }: ClientRequestListProps) {
   return (
-    <div className="bg-white shadow overflow-hidden sm:rounded-md">
-      <ul className="divide-y divide-gray-200">
+    <div className="bg-neu-base rounded-xl py-4">
+      <ul className="space-y-4">
         {requests.map((request) => (
           <ClientRequestItem
             key={request.id}

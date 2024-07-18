@@ -35,31 +35,31 @@ export default function ClientRequestItem({
   onSelectRequest,
 }: ClientRequestItemProps) {
   return (
-    <li className="px-4 py-4 sm:px-6">
+    <li className="px-6 py-6 bg-neu-base rounded-xl shadow-neumorphic mb-4">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-sm font-medium text-indigo-600 truncate">{request.name}</p>
+        <p className="text-2xl font-medium text-neu-green truncate">{request.name}</p>
         <div className="ml-2 flex-shrink-0 flex">
           <p className={`px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${
-            request.status === 'accepted' ? 'bg-green-100 text-green-800' : 
-            request.status === 'rejected' ? 'bg-red-100 text-red-800' : 
-            'bg-gray-100 text-gray-800'}`}>
+            request.status === 'accepted' ? 'bg-neu-green text-neu-base' : 
+            request.status === 'rejected' ? 'bg-red-500 text-neu-base' : 
+            'bg-neu-light text-neu-green'}`}>
             {request.status}
           </p>
         </div>
       </div>
       <div className="mt-2 sm:flex sm:justify-between">
         <div className="sm:flex">
-          <p className="flex items-center text-sm text-gray-500">{request.email} | {request.number}</p>
+          <p className="flex items-center text-sm text-gray-300">{request.email} | {request.number}</p>
         </div>
-        <div className="mt-2 flex items-center text-sm text-gray-500 sm:mt-0">
+        <div className="mt-2 flex items-center text-sm text-gray-300 sm:mt-0">
           <p>{request.date}</p>
         </div>
       </div>
-      <p className="mt-2 text-sm text-gray-500">Work Type: {request.workType}</p>
+      <p className="mt-2 text-sm text-gray-300">Work Type: {request.workType}</p>
       {request.workType === 'Turf' && (
-        <p className="mt-1 text-sm text-gray-500">Has Pets: {request.hasPets ? 'Yes' : 'No'}</p>
+        <p className="mt-1 text-sm text-gray-300">Has Pets: {request.hasPets ? 'Yes' : 'No'}</p>
       )}
-      <p className="mt-2 text-sm text-gray-500">{request.message}</p>
+      <p className="mt-2 text-sm text-gray-300">{request.message}</p>
       <div className="mt-4 flex flex-col sm:flex-row sm:space-x-2 space-y-2 sm:space-y-0">
         {request.status === 'pending' ? (
           selectedRequestId === request.id ? (
@@ -77,13 +77,13 @@ export default function ClientRequestItem({
             />
           )
         ) : (
-          <p className="text-sm font-medium text-gray-500">
-            Status: {request.status.charAt(0).toUpperCase() + request.status.slice(1)}
+          <p className="text-sm mr-4 font-medium text-gray-300">
+            Status:<br/>{request.status.charAt(0).toUpperCase() + request.status.slice(1)}
           </p>
         )}
         <button
           onClick={() => onDelete(request.id)}
-          className="w-full sm:w-auto px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600"
+          className="neu-button"
         >
           Delete
         </button>

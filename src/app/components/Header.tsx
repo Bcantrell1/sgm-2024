@@ -17,8 +17,13 @@ export default function Header() {
     }
   }, [session]);
 
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const handleLogout = () => {
     signOut();
+    closeMenu();
   };
 
   return (
@@ -26,7 +31,7 @@ export default function Header() {
       <nav className="container mx-auto px-6 py-3">
         <div className="flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center" onClick={closeMenu}>
             <div className="relative w-40 h-20 sm:w-40 sm:h-24 md:w-56 md:h-24">
               <Image 
                 src="/sgm_logo.svg" 
@@ -98,11 +103,11 @@ export default function Header() {
         {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="mt-4 md:hidden space-y-2">
-            <Link href="/blog" className="neu-button block w-full text-center">Blog</Link>
-            <Link href="/contact" className="neu-button block w-full text-center">Contact</Link>
-            <a href="tel:+15206682281" className="neu-button block w-full text-center">Call Us</a>
+            <Link href="/blog" className="neu-button block w-full text-center" onClick={closeMenu}>Blog</Link>
+            <Link href="/contact" className="neu-button block w-full text-center" onClick={closeMenu}>Contact</Link>
+            <a href="tel:+15206682281" className="neu-button block w-full text-center" onClick={closeMenu}>Call Us</a>
             {isAuthorized && (
-              <Link href="/admin" className="neu-button-green block w-full text-center">
+              <Link href="/admin" className="neu-button-green block w-full text-center" onClick={closeMenu}>
                 Admin
               </Link>
             )}

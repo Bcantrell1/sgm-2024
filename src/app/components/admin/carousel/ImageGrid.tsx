@@ -10,16 +10,16 @@ interface ImageGridProps {
 
 const ImageGrid: React.FC<ImageGridProps> = ({ images, onImageClick }) => {
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-4">
       {images.map((img) => (
-        <div key={img.id} className="border rounded-lg overflow-hidden shadow-md">
+        <div key={img.id} className="rounded-lg overflow-hidden hover:shadow-neumorphic-inset p-4 shadow-neumorphic">
           <div className="relative pt-[66.66%]">
             <Image
               src={img.url}
               alt={img.name}
               layout="fill"
               objectFit="cover"
-              className="cursor-pointer hover:opacity-75 transition-opacity absolute top-0 left-0"
+              className="cursor-pointer transition-shadow absolute top-0 left-0"
               onClick={() => onImageClick(img)}
             />
           </div>

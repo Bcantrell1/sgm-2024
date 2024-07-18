@@ -1,4 +1,6 @@
 'use client';
+import InputField from '@/app/components/contact/InputField';
+import TextareaField from '@/app/components/contact/TextareaField';
 import { db } from '@/firebase/clientApp';
 import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';
@@ -28,48 +30,41 @@ export default function CreatePost() {
   };
 
   return (
-    <div className="p-4 sm:p-6">
-      <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4 sm:mb-6">Create New Blog Post</h1>
-			<div className="bg-white shadow overflow-hidden sm:rounded-md">
-      <form onSubmit={handleSubmit} className="space-y-4 p-5 text-gray-900">
-        <div>
-          <label htmlFor="title" className="block mb-1">Title</label>
-          <input
+    <div className="p-4 sm:p-6 bg-neu-base">
+      <h1 className="text-2xl sm:text-3xl font-semibold text-neu-green mb-4 sm:mb-6">Create New Blog Post</h1>
+      <div className="bg-neu-base shadow-neumorphic rounded-xl overflow-hidden">
+        <form onSubmit={handleSubmit} className="space-y-6 p-6">
+          <InputField
+            label="Title"
             type="text"
             id="title"
             value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
+            onChange={setTitle}
+            placeholder="Enter post title"
           />
-        </div>
-        <div>
-          <label htmlFor="author" className="block mb-1">Author</label>
-          <input
+          <InputField
+            label="Author"
             type="text"
             id="author"
             value={author}
-            onChange={(e) => setAuthor(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
+            onChange={setAuthor}
+            placeholder="Enter author name"
           />
-        </div>
-        <div>
-          <label htmlFor="content" className="block mb-1">Content</label>
-          <textarea
+          <TextareaField
+            label="Content"
             id="content"
             value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-            className="w-full px-3 py-2 border rounded"
-            rows={10}
-          ></textarea>
-        </div>
-        <button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">
-          Create Post
-        </button>
-      </form>
-			</div>
+            onChange={setContent}
+            placeholder="Enter post content"
+          />
+          <button 
+            type="submit" 
+            className="bg-neu-green text-neu-base px-6 py-2 rounded-md shadow-neumorphic-sm hover:bg-neu-light hover:text-neu-green transition-colors"
+          >
+            Create Post
+          </button>
+        </form>
+      </div>
     </div>
   );
 }

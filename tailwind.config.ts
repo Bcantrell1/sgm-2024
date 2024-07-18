@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        'neu-base': '#1a1a1a',  // Dark background
-        'neu-light': '#2a2a2a', // Lighter shadow
-        'neu-dark': '#0a0a0a',  // Darker shadow
-        'neu-green': '#4CAF50', // Green accent color
+        'neu-base': '#1a1a1a',
+        'neu-light': '#2a2a2a',
+        'neu-dark': '#0a0a0a',
+        'neu-green': '#4CAF50',
       },
       boxShadow: {
         'neumorphic': '5px 5px 10px #0a0a0a, -5px -5px 10px #2a2a2a',

@@ -1,5 +1,7 @@
 'use client';
 import LoadingSpinner from '@/app/components/LoadingSpinner';
+import InputField from '@/app/components/contact/InputField';
+import TextareaField from '@/app/components/contact/TextareaField';
 import { db } from '@/firebase/clientApp';
 import { BlogPost } from '@/types/BlogPost';
 import { doc, getDoc, Timestamp, updateDoc } from 'firebase/firestore';
@@ -42,51 +44,48 @@ export default function EditPost({ params }: { params: { id: string } }) {
     }
   };
 
-  if (!post) return <div><LoadingSpinner/></div>;
+  if (!post) return (
+    <div className="flex justify-center items-center h-screen bg-neu-base">
+      <LoadingSpinner />
+    </div>
+  );
 
   return (
-    <div className="p-4 sm:p-6">
-      <h1 className="text-2xl sm:text-3xl font-semibold text-gray-900 mb-4 sm:mb-6">Edit Blog Post</h1>
-			<div className="bg-white shadow overflow-hidden sm:rounded-md">
-				<form onSubmit={handleSubmit} className="space-y-4 text-gray-900 p-5">
-					<div>
-						<label htmlFor="title" className="block mb-1">Title</label>
-						<input
-							type="text"
-							id="title"
-							value={post.title}
-							onChange={(e) => setPost({ ...post, title: e.target.value })}
-							required
-							className="w-full px-3 py-2 border rounded"
-						/>
-					</div>
-					<div>
-						<label htmlFor="author" className="block mb-1">Author</label>
-						<input
-							type="text"
-							id="author"
-							value={post.author}
-							onChange={(e) => setPost({ ...post, author: e.target.value })}
-							required
-							className="w-full px-3 py-2 border rounded"
-						/>
-					</div>
-					<div>
-						<label htmlFor="content" className="block mb-1">Content</label>
-						<textarea
-							id="content"
-							value={post.content}
-							onChange={(e) => setPost({ ...post, content: e.target.value })}
-							required
-							className="w-full px-3 py-2 border rounded"
-							rows={10}
-						></textarea>
-					</div>
-					<button type="submit" className="bg-green-500 text-white px-4 py-2 rounded">
-						Update Post
-					</button>
-				</form>
-			</div>
+    <div className="p-4 sm:p-6 bg-neu-base">
+      <h1 className="text-2xl sm:text-3xl font-semibold text-neu-green mb-4 sm:mb-6">Edit Blog Post</h1>
+      <div className="bg-neu-base shadow-neumorphic rounded-xl overflow-hidden">
+        <form onSubmit={handleSubmit} className="space-y-6 p-6">
+          <InputField
+            label="Title"
+            type="text"
+            id="title"
+            value={post.title}
+            onChange={(value) => setPost({ ...post, title: value })}
+            placeholder="Enter post title"
+          />
+          <InputField
+            label="Author"
+            type="text"
+            id="author"
+            value={post.author}
+            onChange={(value) => setPost({ ...post, author: value })}
+            placeholder="Enter author name"
+          />
+          <TextareaField
+            label="Content"
+            id="content"
+            value={post.content}
+            onChange={(value) => setPost({ ...post, content: value })}
+            placeholder="Enter post content"
+          />
+          <button 
+            type="submit" 
+            className="bg-neu-green text-neu-base px-6 py-2 rounded-md shadow-neumorphic-sm hover:bg-neu-light hover:text-neu-green transition-colors"
+          >
+            Update Post
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
