@@ -18,11 +18,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={`${inter.className} bg-neu-base min-h-screen flex flex-col`}>
         <Providers>
-          <Header />
-          <main>{children}</main>
-          <Footer />
+          <div className="flex-1 flex flex-col shadow-neumorphic overflow-hidden">
+            <Header />
+            <main className='flex-1 flex flex-col p-2 md:p-6'>{children}</main>
+            <Footer />
+          </div>
         </Providers>
       </body>
     </html>

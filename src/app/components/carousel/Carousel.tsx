@@ -1,5 +1,4 @@
 'use client';
-
 import { CarouselImage } from '@/lib/fetchCarouselItems';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid';
 import NextImage from 'next/image';
@@ -38,14 +37,14 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(nextSlide, 5000);
+    const timer = setInterval(nextSlide, 50000);
     return () => clearInterval(timer);
   }, [nextSlide]);
 
   if (!isClient || isLoading) {
     return (
       <div className="relative w-full" style={{ paddingTop: '46.25%' }}>
-        <div className="absolute inset-0 flex items-center justify-center">
+        <div className="absolute inset-0 flex items-center justify-center bg-neu-base">
           <LoadingSpinner />
         </div>
       </div>
@@ -53,11 +52,11 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
   }
 
   if (images.length === 0) {
-    return <>No images available</>;
+    return <div className="text-neu-green">No images available</div>;
   }
 
   return (
-    <div className="relative w-full">
+    <div className="relative w-full neu-card overflow-hidden">
       <div className="relative pt-[46.25%]">
         {images.map((image, index) => (
           <div
@@ -67,7 +66,7 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
             }`}
           >
             {!loadedImages.has(image.id) && (
-              <div className="absolute inset-0 flex items-center justify-center">
+              <div className="absolute inset-0 flex items-center justify-center bg-neu-base">
                 <LoadingSpinner />
               </div>
             )}
@@ -84,25 +83,27 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
       </div>
       <button
         onClick={prevSlide}
-        className="absolute left-2 sm:left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 text-gray-800 p-2 rounded-full hover:bg-opacity-75 transition-all"
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full neu-button-carousel"
         aria-label="Previous image"
       >
-        <ChevronLeftIcon className="w-6 h-6" />
+        <ChevronLeftIcon className="w-6 h-6 text-neu-green" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-2 sm:right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 text-gray-800 p-2 rounded-full hover:bg-opacity-75 transition-all"
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full neu-button-carousel"
         aria-label="Next image"
       >
-        <ChevronRightIcon className="w-6 h-6" />
+        <ChevronRightIcon className="w-6 h-6 text-neu-green" />
       </button>
-      <div className="absolute bottom-2 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
         {images.map((_, index) => (
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`w-2 h-2 sm:w-3 sm:h-3 rounded-full transition-all ${
-              index === currentIndex ? 'bg-white scale-125' : 'bg-white bg-opacity-50'
+            className={`w-3 h-3 rounded-full transition-all ${
+              index === currentIndex 
+                ? 'neu-dot-active' 
+                : 'neu-dot'
             }`}
             aria-label={`Go to image ${index + 1}`}
           />

@@ -2,32 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  .neu-button {
+    @apply bg-neu-base text-neu-green font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
+  }
+
+  .neu-button-green {
+    @apply bg-neu-green text-neu-base font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
+  }
+
+	.neu-button-green:hover {
+    box-shadow: inset 5px 5px 5px #3f9443, inset -5px -5px 5px #59ca5d;
+  }
+
+  .neu-input {
+    @apply bg-neu-base text-white border-none rounded-lg shadow-neumorphic-inset px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neu-green focus:shadow-neumorphic transition-all duration-300;
+  }
+
+  .neu-card {
+    @apply bg-neu-base rounded-2xl shadow-neumorphic;
+  }
+
+	.neu-button-carousel {
+    @apply bg-neu-base flex items-center justify-center transition-all duration-300;
+    box-shadow: 2px 2px 6px #0f0f0f, -2px -2px 6px #252525;
+  }
+  .neu-button-carousel:hover {
+    box-shadow: inset 3px 3px 6px #0f0f0f, inset -3px -3px 6px #252525;
+  }
+
+  .neu-dot {
+    @apply bg-neu-base transition-all duration-300;
+    box-shadow: 1px 1px 4px #0f0f0f, -1px -1px 4px #252525;
+  }
+
+  .neu-dot-active {
+    @apply bg-neu-green transition-all duration-300;
+    box-shadow: 1px 2px 4px #3a8a3e, -1px -2px 4px #5ed462, inset 1px 2px 4px #3a8a3e, inset -2px -2px 4px #5ed462;
+  }
+
+	.neu-radio {
+    @apply inline-block w-5 h-5 rounded-full bg-neu-base mr-2;
+    box-shadow: 3px 3px 6px #0f0f0f, -3px -3px 6px #252525;
+  }
+  .neu-radio-checked {
+    @apply relative;
+    box-shadow: inset 3px 3px 6px #0f0f0f, inset -3px -3px 6px #252525;
+  }
+  .neu-radio-checked::after {
+    content: '';
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-neu-green;
+  }
+
+  .neu-checkbox {
+    @apply inline-block w-5 h-5 rounded bg-neu-base mr-2;
+    box-shadow: 3px 3px 6px #0f0f0f, -3px -3px 6px #252525;
+  }
+
+  .neu-checkbox-checked {
+    @apply relative;
+  }
+
+  .neu-checkbox-checked::after {
+    content: '✓';
+    @apply absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-neu-green font-bold;
   }
 }

@@ -18,7 +18,6 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
       try {
         const docRef = doc(db, 'blogPosts', params.id);
         const docSnap = await getDoc(docRef);
-
         if (docSnap.exists()) {
           setPost({ id: docSnap.id, ...docSnap.data() } as BlogPost);
         } else {
@@ -31,16 +30,23 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
         setIsLoading(false);
       }
     };
-
     fetchPost();
   }, [params.id]);
 
   if (isLoading) {
-    return <div className="max-w-4xl flex h-screen justify-center items-center mx-auto py-8"><LoadingSpinner/></div>;
+    return (
+      <div className="max-w-4xl flex h-screen justify-center items-center mx-auto py-8">
+        <LoadingSpinner />
+      </div>
+    );
   }
 
   if (error || !post) {
-    return <div className="max-w-4xl mx-auto py-8">{error || 'Post not found'}</div>;
+    return (
+      <div className="max-w-4xl mx-auto py-8 text-neu-green">
+        {error || 'Post not found'}
+      </div>
+    );
   }
 
   return (
@@ -49,16 +55,18 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
         <title>{post.title} | Your Blog Name</title>
         <meta name="description" content={post.content.substring(0, 160)} />
       </Head>
-      <div className="max-w-4xl mx-auto py-8">
-        <Link href="/blog" className="text-blue-500 hover:underline mb-4 inline-block">
-          ← Back to all posts
-        </Link>
-        <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-        <p className="text-gray-500 mb-4">By {post.author} on {formatDate(post.createdAt)}</p>
-        <div className="prose max-w-none">
-          {post.content.split('\n').map((paragraph, index) => (
-            <p key={index} className="mb-4">{paragraph}</p>
-          ))}
+      <div className="container mx-auto py-8 px-2 md:px-4 bg-neu-base">
+        <div className="neu-card p-5 md:p-8 rounded-lg shadow-neumorphic">
+          <Link href="/blog" className="text-neu-green hover:text-white transition-colors duration-300 mb-4 inline-block">
+            ← Back to all posts
+          </Link>
+          <h1 className="text-3xl font-bold mb-4 text-neu-green">{post.title}</h1>
+          <p className="text-white opacity-75 mb-6">By {post.author} on {formatDate(post.createdAt)}</p>
+          <div className="prose max-w-none text-white">
+            {post.content.split('\n').map((paragraph, index) => (
+              <p key={index} className="mb-4">{paragraph}</p>
+            ))}
+          </div>
         </div>
       </div>
     </>

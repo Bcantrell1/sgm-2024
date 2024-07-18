@@ -8,15 +8,22 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      backgroundImage: {
-        "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+      colors: {
+        'neu-base': '#1a1a1a',  // Dark background
+        'neu-light': '#2a2a2a', // Lighter shadow
+        'neu-dark': '#0a0a0a',  // Darker shadow
+        'neu-green': '#4CAF50', // Green accent color
+      },
+      boxShadow: {
+        'neumorphic': '5px 5px 10px #0a0a0a, -5px -5px 10px #2a2a2a',
+        'neumorphic-inset': 'inset 2px 2px 5px #0a0a0a, inset -2px -2px 5px #2a2a2a',
+        'neumorphic-sm': '3px 3px 6px #0a0a0a, -3px -3px 6px #2a2a2a',
       },
     },
   },
   plugins: [
-		require('@tailwindcss/aspect-ratio'),
-	],
+    require('@tailwindcss/aspect-ratio'),
+  ],
 };
+
 export default config;
