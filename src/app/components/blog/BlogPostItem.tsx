@@ -35,7 +35,7 @@ export default function BlogPostItem({ post }: BlogPostItemProps) {
       <p className="mb-4 text-white">{post.content.substring(0, 200)}...</p>
       <Link 
         href={`/blog/${post.id}`} 
-        className="neu-button-green"
+        className="neu-button-green inline-block"
       >
         Read more
       </Link>

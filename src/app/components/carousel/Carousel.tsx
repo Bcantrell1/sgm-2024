@@ -83,14 +83,14 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
       </div>
       <button
         onClick={prevSlide}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full neu-button-carousel"
+        className="absolute left-0 md:left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full neu-button-carousel"
         aria-label="Previous image"
       >
         <ChevronLeftIcon className="w-6 h-6 text-neu-green" />
       </button>
       <button
         onClick={nextSlide}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full neu-button-carousel"
+        className="absolute right-0 md:right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full neu-button-carousel"
         aria-label="Next image"
       >
         <ChevronRightIcon className="w-6 h-6 text-neu-green" />
