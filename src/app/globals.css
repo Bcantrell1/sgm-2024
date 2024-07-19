@@ -20,8 +20,24 @@ body {
     box-shadow: inset 5px 5px 5px #3f9443, inset -5px -5px 5px #59ca5d;
   }
 
+	.neu-button-warning {
+    @apply bg-yellow-500 text-neu-base font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
+  }
+
+  .neu-button-warning:hover {
+    box-shadow: inset 5px 5px 5px #b7821c, inset -5px -5px 5px #ffc107;
+  }
+
+  .neu-button-error {
+    @apply bg-red-500 text-neu-base font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
+  }
+
+  .neu-button-error:hover {
+    box-shadow: inset 5px 5px 5px #b91c1c, inset -5px -5px 5px #ef4444;
+  }
+
   .neu-input {
-    @apply bg-neu-base text-white border-none rounded-lg shadow-neumorphic-inset px-4 py-2 focus:outline-none focus:ring-2 focus:ring-neu-green focus:shadow-neumorphic transition-all duration-300;
+    @apply bg-neu-base text-white border-none rounded-lg shadow-neumorphic-inset px-4 py-2 focus:outline-none focus:shadow-neumorphic transition-all duration-300;
   }
 
   .neu-card {

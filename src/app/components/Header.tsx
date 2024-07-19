@@ -1,6 +1,6 @@
 'use client';
 import { signOut, useSession } from 'next-auth/react';
-import Image from 'next/image';
+import NextImage from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -33,19 +33,19 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center" onClick={closeMenu}>
             <div className="relative w-40 h-20 sm:w-40 sm:h-24 md:w-56 md:h-24">
-              <Image 
+              <NextImage 
                 src="/sgm_logo.svg" 
                 alt="SGM Logo" 
                 fill
                 style={{ objectFit: 'contain' }}
                 sizes="(max-width: 640px) 4rem, (max-width: 768px) 6rem, 8rem"
+								priority
               />
             </div>
           </Link>
 
-          {/* Navigation Items (centered) */}
           <div className="hidden md:flex space-x-4 items-center flex-grow justify-center">
-            <Link href="/blog" className="neu-button">Blog</Link>
+            <Link href="/blog" className="neu-button">News</Link>
             <Link href="/contact" className="neu-button">Contact</Link>
             {isAuthorized && (
               <Link href="/admin" className="neu-button-green">
@@ -54,7 +54,6 @@ export default function Header() {
             )}
           </div>
 
-          {/* Call Item and Auth (right-aligned) */}
           <div className="hidden md:flex items-center space-x-4">
             <a href="tel:+15206682281" className="neu-button flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -72,7 +71,6 @@ export default function Header() {
             )}
           </div>
 
-          {/* Mobile Menu Button */}
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -100,10 +98,9 @@ export default function Header() {
           </div>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="mt-4 md:hidden space-y-2">
-            <Link href="/blog" className="neu-button block w-full text-center" onClick={closeMenu}>Blog</Link>
+            <Link href="/blog" className="neu-button block w-full text-center" onClick={closeMenu}>News</Link>
             <Link href="/contact" className="neu-button block w-full text-center" onClick={closeMenu}>Contact</Link>
             <a href="tel:+15206682281" className="neu-button block w-full text-center" onClick={closeMenu}>Call Us</a>
             {isAuthorized && (

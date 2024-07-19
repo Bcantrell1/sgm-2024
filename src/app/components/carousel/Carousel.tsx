@@ -73,10 +73,10 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
             <NextImage
               src={image.url}
               alt={image.name}
-              layout="fill"
-              objectFit="cover"
               priority={index === 0}
-              onLoadingComplete={() => handleImageLoad(image.id)}
+              onLoad={() => handleImageLoad(image.id)}
+							fill
+							className='object-cover'
             />
           </div>
         ))}

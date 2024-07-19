@@ -1,14 +1,7 @@
 import { db } from '@/firebase/clientApp';
+import { Job } from '@/types/Job';
 import { collection, getDocs, query } from "firebase/firestore";
 
-export interface Job {
-  id: string;
-  client: string;
-  project: string;
-  status: 'Not Started' | 'In Progress' | 'Completed';
-  startDate: string;
-  estimatedCompletion: string;
-}
 
 export async function fetchJobs(): Promise<Job[]> {
   const q = query(collection(db, "jobs"));

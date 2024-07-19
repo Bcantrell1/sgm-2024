@@ -3,8 +3,8 @@ import LoadingSpinner from '@/app/components/LoadingSpinner';
 import { db, storage } from '@/firebase/clientApp';
 import { collection, deleteDoc, doc, getDocs, query } from 'firebase/firestore';
 import { deleteObject, getDownloadURL, ref } from 'firebase/storage';
+import NextImage from 'next/image';
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 
 interface CarouselImage {
   id: string;
@@ -59,20 +59,19 @@ export default function ImageCleanup() {
       <div className="bg-neu-base overflow-hidden">
         <button 
           onClick={fetchImages}
-          className="mb-4 mt-4 bg-neu-green text-neu-base px-4 py-2 rounded-md shadow-neumorphic-sm hover:bg-neu-light hover:text-neu-green transition-colors"
+          className="m-4 neu-button-green"
         >
           Refresh Images
         </button>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
           {images.map((image) => (
             <div key={image.id} className="bg-neu-base shadow-neumorphic rounded-xl p-4">
-              <div className='relative w-full h-40 mb-2'>
-                <Image 
+              <div className='relative w-full h-44 mb-2'>
+                <NextImage 
                   src={image.url} 
                   alt={image.name} 
-                  layout="fill"
-                  objectFit="cover"
-                  className="rounded-md"
+                  className="rounded-md object-cover"
+									fill
                 />
               </div>
               <button 

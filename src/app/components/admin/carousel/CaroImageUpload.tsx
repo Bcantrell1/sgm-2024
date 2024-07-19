@@ -1,10 +1,10 @@
 'use client';
+import { db } from '@/firebase/clientApp';
 import { CarouselImage } from '@/lib/fetchCarouselImages';
+import { collection, getDocs, query } from 'firebase/firestore';
 import React, { useEffect, useState } from 'react';
 import ImageGrid from './ImageGrid';
 import ImageUploadModal from './ImageUploadModal';
-import { collection, getDocs, query } from 'firebase/firestore';
-import { db } from '@/firebase/clientApp';
 
 interface CaroImageUploadProps {
   imagesPromise: Promise<CarouselImage[]>;
@@ -48,13 +48,13 @@ const CaroImageUpload: React.FC<CaroImageUploadProps> = ({ imagesPromise }) => {
       <div className='flex justify-between flex-wrap gap-2'>
         <button 
           onClick={() => openModal()} 
-          className="m-4 bg-neu-green text-neu-base px-4 py-2 rounded-md shadow-neumorphic-sm hover:bg-neu-light hover:text-neu-green transition-colors"
+          className="m-4 neu-button-green"
         >
           Add Image
         </button>
         <button 
           onClick={fetchImages}
-          className="m-4 bg-neu-green text-neu-base px-4 py-2 rounded-md shadow-neumorphic-sm hover:bg-neu-light hover:text-neu-green transition-colors"
+          className="m-4 neu-button"
         >
           Refresh Images
         </button>

@@ -83,7 +83,7 @@ export default function ClientRequestItem({
         )}
         <button
           onClick={() => onDelete(request.id)}
-          className="neu-button"
+          className="neu-button-error"
         >
           Delete
         </button>

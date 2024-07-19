@@ -1,7 +1,7 @@
 'use client';
 import { db } from '@/firebase/clientApp';
-import { Job } from '@/lib/fetchJobs';
-import { doc, updateDoc } from "firebase/firestore";
+import { Job } from '@/types/Job';
+import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
 import { useEffect, useState } from 'react';
 import JobList from './JobList';
 
@@ -16,12 +16,28 @@ export default function JobTrackerContent({ jobsPromise }: JobTrackerContentProp
     jobsPromise.then(setJobs);
   }, [jobsPromise]);
 
-  const handleStatusChange = async (id: string, newStatus: Job['status']) => {
-    await updateDoc(doc(db, "jobs", id), { status: newStatus });
-    setJobs(jobs.map(job => 
-      job.id === id ? { ...job, status: newStatus } : job
-    ));
-  };
+	const handleStatusChange = async (id: string, newStatus: Job['status']) => {
+		await updateDoc(doc(db, "jobs", id), { status: newStatus });
+		setJobs(jobs.map(job =>
+			job.id === id ? { ...job, status: newStatus } : job
+		));
+	
+		if (newStatus === 'Completed') {
+			const completedJob = jobs.find(job => job.id === id);
+			if (completedJob) {
+				const { client, workType} = completedJob;
+				if (client && workType) {
+					await addDoc(collection(db, "recentProjects"), {
+						client,
+						workType,
+						completionDate: new Date().toISOString()
+					});
+				} else {
+					console.error('Client or project is undefined for job:', completedJob);
+				}
+			}
+		}
+	};
 
   return <JobList jobs={jobs} onStatusChange={handleStatusChange} />;
 }

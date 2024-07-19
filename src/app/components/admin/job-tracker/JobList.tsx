@@ -1,4 +1,4 @@
-import { Job } from '@/lib/fetchJobs';
+import { Job } from '@/types/Job';
 import React from 'react';
 import JobItem from './JobItem';
 

@@ -1,9 +1,9 @@
 'use client';
 import { AuthWrapper } from '@/app/components/AuthWrapper';
+import { Square2StackIcon, XMarkIcon } from '@heroicons/react/24/solid';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ReactNode, useState } from 'react';
-import { Square2StackIcon, XMarkIcon } from '@heroicons/react/24/solid';
 
 interface NavItem {
   href: string;
@@ -43,6 +43,12 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
       ]
     },
     {
+      title: 'Projects Management',
+      items: [
+        { href: '/admin/recent-projects', label: 'Recent Projects' },
+      ]
+    },
+    {
       title: 'Carousel Management',
       items: [
         { href: '/admin/image-upload', label: 'Image Upload' },
@@ -60,7 +66,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
 
   return (
     <AuthWrapper>
-      <div className="relative min-h-screen bg-neu-base flex">
+      <div className="relative bg-neu-base flex flex-1">
         <button
           className="md:hidden fixed bottom-4 right-10 z-20 p-2 bg-neu-green text-neu-base rounded-full shadow-neumorphic"
           onClick={toggleSidebar}

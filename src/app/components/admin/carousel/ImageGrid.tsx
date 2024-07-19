@@ -1,6 +1,6 @@
 'use client';
 import { CarouselImage } from '@/lib/fetchCarouselImages';
-import Image from 'next/image';
+import NextImage from 'next/image';
 import React from 'react';
 
 interface ImageGridProps {
@@ -14,13 +14,12 @@ const ImageGrid: React.FC<ImageGridProps> = ({ images, onImageClick }) => {
       {images.map((img) => (
         <div key={img.id} className="rounded-lg overflow-hidden hover:shadow-neumorphic-inset p-4 shadow-neumorphic">
           <div className="relative pt-[66.66%]">
-            <Image
+            <NextImage
               src={img.url}
               alt={img.name}
-              layout="fill"
-              objectFit="cover"
-              className="cursor-pointer transition-shadow absolute top-0 left-0"
+              className="cursor-pointer object-cover transition-shadow absolute top-0 left-0"
               onClick={() => onImageClick(img)}
+							fill
             />
           </div>
         </div>

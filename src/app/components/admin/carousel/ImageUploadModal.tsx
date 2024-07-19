@@ -1,12 +1,12 @@
 'use client';
 import { CarouselImage } from '@/lib/fetchCarouselImages';
 import { handleDelete, handleUpload } from '@/utils/imageUtils';
-import Image from 'next/image';
+import NextImage from 'next/image';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useDropzone } from 'react-dropzone';
 import Modal from 'react-modal';
-import ImagePreview from './ImagePreview';
 import LoadingSpinner from '../../LoadingSpinner';
+import ImagePreview from './ImagePreview';
 
 interface ImageUploadModalProps {
   isOpen: boolean;
@@ -72,6 +72,11 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, se
     }
   };
 
+	const onCloseClick = () => {
+		onClose();
+		setPreviewUrl(null);
+	}
+
   return (
     <Modal
       isOpen={isOpen}
@@ -94,6 +99,8 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, se
           />
         ) : (
           <div className="w-full">
+						{!previewUrl ? (
+
             <div 
               {...getRootProps()} 
               className={`border-2 border-dashed rounded-lg p-12 text-center cursor-pointer transition-colors ${
@@ -107,29 +114,30 @@ const ImageUploadModal: React.FC<ImageUploadModalProps> = ({ isOpen, onClose, se
                 <p className='text-neu-light'>Drop an Image <br/>Or Click Here</p>
               )}
             </div>
+						): null}
             {previewUrl && (
-              <div className="mt-4">
-                <Image
+              <div className="mt-4 relative h-80 rounded">
+                <NextImage
                   src={previewUrl}
                   alt="Image preview"
-                  width={400}
-                  height={300}
-                  layout="responsive"
+									className='rounded'
+									fill
                 />
-                <button 
-                  onClick={handleImageUpload} 
-                  className="mt-4 bg-neu-green text-neu-base px-4 py-2 rounded-md shadow-neumorphic-sm hover:bg-neu-light hover:text-neu-green transition-colors"
-                  disabled={isLoading}
-                >
-                  Upload Image
-                </button>
+                
               </div>
             )}
           </div>
         )}
+				<button 
+					onClick={handleImageUpload} 
+					className="mt-4 neu-button-green"
+					disabled={isLoading}
+					>
+					Upload Image
+				</button>
         <button 
-          onClick={onClose} 
-          className="mt-4 bg-neu-light text-neu-green px-4 py-2 rounded-md shadow-neumorphic-sm hover:bg-neu-green hover:text-neu-base transition-colors"
+          onClick={onCloseClick} 
+          className="mt-4 neu-button-error"
           disabled={isLoading}
         >
           Close

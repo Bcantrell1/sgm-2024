@@ -35,21 +35,25 @@ export default function ClientRequestList({
 }: ClientRequestListProps) {
   return (
     <div className="bg-neu-base rounded-xl py-4">
-      <ul className="space-y-4">
-        {requests.map((request) => (
-          <ClientRequestItem
-            key={request.id}
-            request={request}
-            selectedRequestId={selectedRequestId}
-            selectedDate={selectedDate}
-            onStatusChange={onStatusChange}
-            onDelete={onDelete}
-            onDateChange={onDateChange}
-            onAcceptWithDate={onAcceptWithDate}
-            onSelectRequest={onSelectRequest}
-          />
-        ))}
-      </ul>
+      {requests.length === 0 ? (
+        <p className="text-center text-gray-300">No requests found.</p>
+      ) : (
+        <ul className="space-y-4">
+          {requests.map((request) => (
+            <ClientRequestItem
+              key={request.id}
+              request={request}
+              selectedRequestId={selectedRequestId}
+              selectedDate={selectedDate}
+              onStatusChange={onStatusChange}
+              onDelete={onDelete}
+              onDateChange={onDateChange}
+              onAcceptWithDate={onAcceptWithDate}
+              onSelectRequest={onSelectRequest}
+            />
+          ))}
+        </ul>
+      )}
     </div>
   );
 }

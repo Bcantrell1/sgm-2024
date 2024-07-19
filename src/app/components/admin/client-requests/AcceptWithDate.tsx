@@ -26,13 +26,13 @@ export default function AcceptWithDate({
       />
       <button
         onClick={onAcceptWithDate}
-        className="w-full sm:w-auto px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+        className="w-full sm:w-auto neu-button-green"
       >
         Confirm Accept
       </button>
       <button
         onClick={onCancel}
-        className="w-full sm:w-auto px-3 py-1 bg-gray-500 text-white rounded hover:bg-gray-600"
+        className="w-full sm:w-auto neu-button-error"
       >
         Cancel
       </button>

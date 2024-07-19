@@ -9,13 +9,13 @@ export default function RequestActions({ requestId, onStatusChange, onSelectRequ
     <>
       <button
         onClick={() => onSelectRequest(requestId)}
-        className="w-full sm:w-auto px-3 py-1 bg-green-500 text-white rounded hover:bg-green-600"
+        className="w-full sm:w-auto neu-button-green"
       >
         Accept
       </button>
       <button
         onClick={() => onStatusChange(requestId, 'rejected')}
-        className="w-full sm:w-auto px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600"
+        className="w-full sm:w-auto neu-button-warning"
       >
         Reject
       </button>

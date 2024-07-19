@@ -1,13 +1,5 @@
+import { Job } from "@/types/Job";
 import JobStatusButtons from "./JobStatusButtons";
-
-interface Job {
-  id: string;
-  client: string;
-  project: string;
-  status: 'Not Started' | 'In Progress' | 'Completed';
-  startDate: string;
-  estimatedCompletion: string;
-}
 
 interface JobItemProps {
   job: Job;
@@ -32,9 +24,6 @@ export default function JobItem({ job, onStatusChange }: JobItemProps) {
       <div className="mt-2 sm:flex sm:justify-between">
         <div className="sm:flex">
           <p className="flex items-center text-sm text-gray-300">{job.project}</p>
-        </div>
-        <div className="mt-2 flex items-center text-sm text-gray-300 sm:mt-0">
-          <p>Start: {job.startDate} | Est. Completion: {job.estimatedCompletion}</p>
         </div>
       </div>
       <div className="mt-4 flex space-x-2">
