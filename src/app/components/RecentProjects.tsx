@@ -17,11 +17,11 @@ export default function RecentProjects() {
   }, []);
 
   return (
-    <div className="bg-neu-base py-4">
+    <div className="bg-neu-base py-10 md:py-20">
       <h2 className="text-2xl font-semibold text-gray-300 mb-4">Recent Projects</h2>
       <ul className="space-4 gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {recentProjects.map((project) => (
-          <li key={project.id} className="bg-neu-light rounded-xl shadow-neumorphic">
+          <li key={project.id} className="bg-neu-light flex flex-col rounded-xl shadow-neumorphic">
 						<div className='relative w-full inline-block min-h-80'>
 							<NextImage 
 								alt={project.title}
@@ -30,10 +30,10 @@ export default function RecentProjects() {
 								fill
 							/>
 						</div>
-						<div className=' px-6 py-4'>
-							<p className="text-sm font-medium text-neu-green">{project.title}</p>
-							<p className="text-sm text-gray-300">{project.description}</p>
-							<p className="text-xs text-gray-400">Completed: {new Date(project.completionDate).toLocaleDateString()}</p>
+						<div className='flex flex-col flex-1 h-auto px-6 py-4'>
+							<p className="text-lg font-medium text-neu-yellow">{project.title}</p>
+							<p className="text-md mb-2 text-gray-300">{project.description}</p>
+							<p className="text-xs flex-grow flex items-end text-gray-400">Project Completed: {new Date(project.completionDate).toLocaleDateString()}</p>
 						</div>
           </li>
         ))}

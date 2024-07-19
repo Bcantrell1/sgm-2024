@@ -16,14 +16,14 @@ export default function AdminLogin() {
 
   if (status === 'loading') {
     return (
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center h-auto">
         <LoadingSpinner size={128} />
       </div>
     );
   }
 
   return (
-    <div className="flex items-center justify-center flex-1">
+    <div className="flex items-center justify-center">
       <div className="p-6 max-w-sm w-full rounded-md">
         <h1 className="text-2xl font-semibold text-center text-neu-green mb-6">Admin Login</h1>
         <button

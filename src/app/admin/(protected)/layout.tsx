@@ -83,7 +83,7 @@ export default function AdminLayout({ children }: AdminLayoutProps) {
           <nav>
             {navGroups.map((group, index) => (
               <div key={index} className="mb-4">
-                <h2 className="text-xs font-semibold text-gray-200 uppercase tracking-wide mb-2 px-4">
+                <h2 className="text-xs font-semibold text-yellow-100 uppercase tracking-wide mb-2 px-4">
                   {group.title}
                 </h2>
                 {group.items.map((item) => (

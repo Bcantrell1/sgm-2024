@@ -9,7 +9,7 @@ body {
 
 @layer components {
   .neu-button {
-    @apply bg-neu-base text-neu-green font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
+    @apply bg-neu-base text-neu-yellow font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
   }
 
   .neu-button-green {
@@ -58,8 +58,8 @@ body {
   }
 
   .neu-dot-active {
-    @apply bg-neu-green transition-all duration-300;
-    box-shadow: 1px 2px 4px #3a8a3e, -1px -2px 4px #5ed462, inset 1px 2px 4px #3a8a3e, inset -2px -2px 4px #5ed462;
+    @apply bg-neu-yellow transition-all duration-300;
+    box-shadow: 1px 2px 4px #b7821c, -1px -2px 4px #ffc107, inset 1px 2px 4px #b7821c, inset -2px -2px 4px #ffc107;
   }
 
 	.neu-radio {

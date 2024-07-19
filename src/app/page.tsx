@@ -3,7 +3,7 @@ import RecentProjects from './components/RecentProjects'
 
 export default function Home() {
   return (
-    <div className="container mx-auto px-6 py-12">
+    <div className="w-full px-6 py-12">
 			<CarouselWrapper/>
 			<RecentProjects />
     </div>

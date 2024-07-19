@@ -45,7 +45,7 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
     return (
       <div className="relative w-full" style={{ paddingTop: '46.25%' }}>
         <div className="absolute inset-0 flex items-center justify-center bg-neu-base">
-          <LoadingSpinner />
+          <LoadingSpinner color='hsl(39, 73%, 41%)' />
         </div>
       </div>
     );
@@ -57,7 +57,7 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
 
   return (
     <div className="relative w-full neu-card overflow-hidden">
-      <div className="relative pt-[46.25%]">
+      <div className="relative pt-[38.25%]">
         {images.map((image, index) => (
           <div
             key={image.id}
@@ -67,7 +67,7 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
           >
             {!loadedImages.has(image.id) && (
               <div className="absolute inset-0 flex items-center justify-center bg-neu-base">
-                <LoadingSpinner />
+                <LoadingSpinner color='hsl(39, 73%, 41%)' />
               </div>
             )}
             <NextImage
@@ -86,14 +86,14 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
         className="absolute left-0 md:left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full neu-button-carousel"
         aria-label="Previous image"
       >
-        <ChevronLeftIcon className="w-6 h-6 text-neu-green" />
+        <ChevronLeftIcon className="w-6 h-6 text-neu-yellow" />
       </button>
       <button
         onClick={nextSlide}
         className="absolute right-0 md:right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 rounded-full neu-button-carousel"
         aria-label="Next image"
       >
-        <ChevronRightIcon className="w-6 h-6 text-neu-green" />
+        <ChevronRightIcon className="w-6 h-6 text-neu-yellow" />
       </button>
       <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3">
         {images.map((_, index) => (
