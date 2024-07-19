@@ -9,7 +9,7 @@ type TextareaFieldProps = {
 export default function TextareaField({ label, id, value, onChange, placeholder }: TextareaFieldProps) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-neu-green mb-1">{label}</label>
+      <label htmlFor={id} className="block text-sm font-medium text-neu-yellow mb-1">{label}</label>
       <textarea
         id={id}
         value={value}

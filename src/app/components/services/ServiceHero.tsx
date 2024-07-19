@@ -1,4 +1,4 @@
-import NextImage from 'next/image';
+import NextImage, { StaticImageData } from 'next/image';
 import React from 'react';
 
 interface ServiceHeroProps {
@@ -9,7 +9,7 @@ interface ServiceHeroProps {
 
 const ServiceHero: React.FC<ServiceHeroProps> = ({ imageSrc, title, subtitle }) => {
   return (
-    <div className="relative w-full h-[40vh] md:h-[50vh] lg:h-[60vh] mb-8">
+    <div className="relative w-full h-[40vh] md:h-[50vh] lg:h-[60vh]">
       <NextImage
         src={imageSrc}
         alt={title}

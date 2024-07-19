@@ -13,7 +13,7 @@ const ProcessStep: React.FC<ProcessStepProps> = ({ icon: Icon, title, descriptio
       <Icon className="w-8 h-8 text-neu-green" />
     </div>
     <h3 className="text-neu-yellow font-semibold mb-2">{title}</h3>
-    <p className="text-gray-300 text-sm">{description}</p>
+    <p className="text-gray-300 text-sm leading-relaxed">{description}</p>
   </div>
 );
 

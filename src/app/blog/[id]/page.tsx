@@ -43,7 +43,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
 
   if (error || !post) {
     return (
-      <div className="max-w-4xl mx-auto py-8 text-neu-green">
+      <div className="max-w-4xl mx-auto py-8 text-neu-yellow">
         {error || 'Post not found'}
       </div>
     );
@@ -60,7 +60,7 @@ export default function BlogPostPage({ params }: { params: { id: string } }) {
           <Link href="/blog" className="text-neu-green hover:text-white transition-colors duration-300 mb-4 inline-block">
             ← Back to all posts
           </Link>
-          <h1 className="text-3xl font-bold mb-4 text-neu-green">{post.title}</h1>
+          <h1 className="text-3xl font-bold mb-4 text-neu-text-raised text-neu-yellow">{post.title}</h1>
           <p className="text-white opacity-75 mb-6">By {post.author} on {formatDate(post.createdAt)}</p>
           <div className="prose max-w-none text-white">
             {post.content.split('\n').map((paragraph, index) => (

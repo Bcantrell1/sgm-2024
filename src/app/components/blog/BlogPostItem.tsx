@@ -28,14 +28,14 @@ export default function BlogPostItem({ post }: BlogPostItemProps) {
 
   return (
     <div className="bg-neu-base p-4 md:p-6 rounded-lg shadow-neumorphic transition-all duration-300 hover:shadow-neumorphic-sm">
-      <h2 className="text-2xl font-semibold mb-2 text-neu-green">{post.title}</h2>
+      <h2 className="text-2xl font-semibold mb-2 text-neu-yellow">{post.title}</h2>
       <p className="text-neu-green opacity-75 mb-4">
         By {post.author} on {formatDate(post.createdAt)}
       </p>
       <p className="mb-4 text-white">{post.content.substring(0, 200)}...</p>
       <Link 
         href={`/blog/${post.id}`} 
-        className="neu-button-green inline-block"
+        className="neu-button inline-block"
       >
         Read more
       </Link>

@@ -10,7 +10,7 @@ type InputFieldProps = {
 export default function InputField({ label, type, id, value, onChange, placeholder }: InputFieldProps) {
   return (
     <div>
-      <label htmlFor={id} className="block text-sm font-medium text-neu-green mb-1">{label}</label>
+      <label htmlFor={id} className="block text-sm font-medium text-neu-yellow mb-1">{label}</label>
       <input
         type={type}
         id={id}

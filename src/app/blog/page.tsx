@@ -8,7 +8,7 @@ export default async function Blog() {
 
   return (
     <div className="container mx-auto py-8 px-4 bg-neu-base">
-      <h1 className="text-3xl font-bold mb-8 text-neu-green">News</h1>
+      <h1 className="text-3xl font-bold mb-8 text-neu-yellow text-neu-text-raised">News</h1>
 			<Suspense fallback={<div className='flex justify-center items-center h-40 bg-neu-base rounded-lg shadow-neumorphic'><LoadingSpinner /></div>}>
 				<BlogPosts postsPromise={postsPromise} />
 			</Suspense>

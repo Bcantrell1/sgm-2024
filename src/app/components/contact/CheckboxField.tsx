@@ -16,8 +16,8 @@ export default function CheckboxField({ label, id, checked, onChange }: Checkbox
           onChange={(e) => onChange(e.target.checked)}
           className="sr-only"
         />
-        <span className={`neu-checkbox ${checked ? 'neu-checkbox-checked' : ''}`}></span>
-        <span className="ml-2 text-sm text-neu-green">{label}</span>
+        <span className={`neu-checkbox cursor-pointer ${checked ? 'neu-checkbox-checked' : ''}`}></span>
+        <span className="ml-2 text-sm text-neu-yellow">{label}</span>
       </label>
     </div>
   );
