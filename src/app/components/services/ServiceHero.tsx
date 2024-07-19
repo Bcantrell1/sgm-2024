@@ -1,4 +1,5 @@
-import NextImage, { StaticImageData } from 'next/image';
+'use client';
+import NextImage from 'next/image';
 import React from 'react';
 
 interface ServiceHeroProps {
