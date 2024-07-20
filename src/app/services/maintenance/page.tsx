@@ -4,6 +4,7 @@ import MaintenanceStandards from '@/app/components/services/maintenance/Maintena
 import MinimumEffort from '@/app/components/services/maintenance/MinimumEffort';
 import ServiceHero from '@/app/components/services/ServiceHero';
 import React, { useState } from 'react';
+import MaintenanceImage from '../../../../public/bgs/maintenance_bg.jpg';
 
 const MaintenancePage: React.FC = () => {
 	const [submitMessage, setSubmitMessage] = useState('');
@@ -11,7 +12,7 @@ const MaintenancePage: React.FC = () => {
   return (
     <div className="bg-neu-base min-h-screen">
       <ServiceHero
-        imageSrc="/bgs/maintenance_bg.jpg"
+        imageSrc={MaintenanceImage}
         title="Effortless Care for Enduring Beauty"
         subtitle="Experience the low-maintenance luxury of SGM artificial turf. Our innovative grass solutions demand only minimal attention – a quick brush, easy debris removal, and occasional rinse – to preserve their lush appearance and superior performance for years to come."
       />

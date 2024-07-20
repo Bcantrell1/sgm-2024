@@ -5,6 +5,7 @@ import Installers from '@/app/components/services/installation/Installers';
 import ServiceHero from '@/app/components/services/ServiceHero';
 import VideoSection from '@/app/components/services/VideoSection';
 import React, { useState } from 'react';
+import InstallationImage from '../../../../public/bgs/installation_bg.jpg';
 
 const InstallationPage: React.FC = () => {
 	const [submitMessage, setSubmitMessage] = useState('');
@@ -12,7 +13,7 @@ const InstallationPage: React.FC = () => {
   return (
     <div className="bg-neu-base min-h-screen">
       <ServiceHero
-        imageSrc="/bgs/installation_bg.jpg"
+        imageSrc={InstallationImage}
         title="Artificial Grass Installation"
         subtitle="The SGM difference: Our meticulous artificial turf installation process
                   combines expert site preparation, precision turf laying, and seamless joining techniques.
