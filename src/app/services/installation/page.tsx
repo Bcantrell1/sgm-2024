@@ -4,7 +4,7 @@ import InstallationProcess from '@/app/components/services/installation/Installa
 import Installers from '@/app/components/services/installation/Installers';
 import ServiceHero from '@/app/components/services/ServiceHero';
 import VideoSection from '@/app/components/services/VideoSection';
-import InstallationImage from '@/public/bgs/installation_bg.jpg';
+import InstallationImage from '@/public/bgs/installation.jpg';
 import React, { useState } from 'react';
 
 const InstallationPage: React.FC = () => {
