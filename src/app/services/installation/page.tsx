@@ -4,8 +4,8 @@ import InstallationProcess from '@/app/components/services/installation/Installa
 import Installers from '@/app/components/services/installation/Installers';
 import ServiceHero from '@/app/components/services/ServiceHero';
 import VideoSection from '@/app/components/services/VideoSection';
+import InstallationImage from '@/public/bgs/installation_bg.jpg';
 import React, { useState } from 'react';
-import InstallationImage from '../../../../public/bgs/installation_bg.jpg';
 
 const InstallationPage: React.FC = () => {
 	const [submitMessage, setSubmitMessage] = useState('');

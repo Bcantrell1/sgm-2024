@@ -3,8 +3,8 @@ import ContactForm from '@/app/components/contact/ContactForm';
 import MaintenanceStandards from '@/app/components/services/maintenance/MaintenanceStandards';
 import MinimumEffort from '@/app/components/services/maintenance/MinimumEffort';
 import ServiceHero from '@/app/components/services/ServiceHero';
+import MaintenanceImage from '@/public/bgs/maintenance_bg.jpg';
 import React, { useState } from 'react';
-import MaintenanceImage from '../../../../public/bgs/maintenance_bg.jpg';
 
 const MaintenancePage: React.FC = () => {
 	const [submitMessage, setSubmitMessage] = useState('');
