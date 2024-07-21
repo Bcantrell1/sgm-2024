@@ -47,7 +47,7 @@ const InstallationProcess: React.FC = () => {
   ];
 
   return (
-    <div className="bg-black w-full py-12">
+    <div className="bg-black w-full py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4">
         <h2 className="text-3xl md:text-5xl text-center font-bold mb-12">
           <span className="text-neu-green">OUR INSTALLATION</span>{' '}

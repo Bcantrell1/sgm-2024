@@ -57,7 +57,7 @@ const Carousel: React.FC<CarouselProps> = ({ imagesPromise }) => {
 
   return (
     <div className="relative w-full neu-card overflow-hidden">
-      <div className="relative pt-[38.25%]">
+      <div className="relative pt-[72.25%] md:pt-[38.25%]">
         {images.map((image, index) => (
           <div
             key={image.id}

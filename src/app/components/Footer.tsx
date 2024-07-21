@@ -50,22 +50,23 @@ export default function Footer() {
               {isServicesOpen && (
                 <div className="absolute bottom-full left-0 bg-neu-base shadow-neumorphic mt-2 py-2 px-4 rounded-md">
                   <Link
-                    href="/services/installation"
+                    href="/services/turf"
                     className="block text-neu-yellow py-2 transition-all duration-200 ease-in-out hover:text-white"
                     onClick={() => setIsServicesOpen(false)}
                   >
-                    Installation
+                    Turf
                   </Link>
                   <Link
-                    href="/services/maintenance"
+                    href="/services/hardscape"
                     className="block text-neu-yellow py-2 transition-all duration-200 ease-in-out hover:text-white"
                     onClick={() => setIsServicesOpen(false)}
                   >
-                    Maintenance
+                    Hardscape
                   </Link>
                 </div>
               )}
             </div>
+            <Link href="/custom-design" className="hover:text-white text-neu-yellow transition-colors duration-300">Design</Link>
             <Link href="/contact" className="hover:text-white text-neu-yellow transition-colors duration-300">Contact</Link>
           </div>
           <div className="w-full md:w-1/4 text-center md:text-right">

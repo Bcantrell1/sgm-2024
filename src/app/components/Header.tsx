@@ -45,11 +45,11 @@ export default function Header() {
       <NavLink href="/blog" className={isMobile ? "neu-button block w-full text-center" : "neu-button"} onClick={() => isMobile && setIsMenuOpen(false)}>News</NavLink>
       {isMobile ? (
         <>
-          <NavLink href="/services/installation" className="neu-button block w-full text-center" onClick={() => setIsMenuOpen(false)}>
-            Installation
+          <NavLink href="/services/turf" className="neu-button block w-full text-center" onClick={() => setIsMenuOpen(false)}>
+            Artificial Turf
           </NavLink>
-          <NavLink href="/services/maintenance" className="neu-button block w-full text-center" onClick={() => setIsMenuOpen(false)}>
-            Maintenance
+          <NavLink href="/services/hardscape" className="neu-button block w-full text-center" onClick={() => setIsMenuOpen(false)}>
+            Hardscape
           </NavLink>
         </>
       ) : (
@@ -58,7 +58,7 @@ export default function Header() {
 						className="neu-button flex items-center"
 						onClick={() => setIsServicesOpen(!isServicesOpen)}
 					>
-						Services
+						Our Services
 						<svg 
 							className={`ml-1 h-4 w-4 transform transition-transform duration-200 ${isServicesOpen ? 'rotate-180' : ''}`} 
 							viewBox="0 0 20 20" 
@@ -74,27 +74,28 @@ export default function Header() {
           {isServicesOpen && (
           <div className="absolute top-full left-0 bg-neu-base shadow-neumorphic mt-2 py-2 px-4 rounded-md">
 						<NavLink 
-							href="/services/installation" 
+							href="/services/turf" 
 							className="block text-neu-yellow py-2 transition-all duration-200 ease-in-out" 
 							onClick={() => setIsServicesOpen(false)}
 						>
 							<span className="text-neu-text-raised hover:text-neu-text-pressed">
-								Installation
+								Artificial Turf
 							</span>
 						</NavLink>
 						<NavLink 
-							href="/services/maintenance" 
+							href="/services/hardscape" 
 							className="block py-2 text-neu-yellow transition-all duration-200 ease-in-out" 
 							onClick={() => setIsServicesOpen(false)}
 						>
 							<span className="text-neu-text-raised hover:text-neu-text-pressed">
-								Maintenance
+								Hardscape
 							</span>
 						</NavLink>
 					</div>
           )}
         </div>
       )}
+      <NavLink href="/custom-design" className={isMobile ? "neu-button block w-full text-center" : "neu-button"} onClick={() => isMobile && setIsMenuOpen(false)}>Custom Design</NavLink>
       <NavLink href="/contact" className={isMobile ? "neu-button block w-full text-center" : "neu-button"} onClick={() => isMobile && setIsMenuOpen(false)}>Contact</NavLink>
       {session?.user?.email && (
         <NavLink href="/admin" className={isMobile ? "neu-button-green block w-full text-center" : "neu-button-green"} onClick={() => isMobile && setIsMenuOpen(false)}>Admin</NavLink>

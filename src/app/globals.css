@@ -21,11 +21,11 @@ body {
   }
 
 	.neu-button-warning {
-    @apply bg-yellow-500 text-neu-base font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
+    @apply bg-yellow-600 text-neu-base font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
   }
 
   .neu-button-warning:hover {
-    box-shadow: inset 5px 5px 5px #b7821c, inset -5px -5px 5px #ffc107;
+    box-shadow: inset 5px 5px 5px #ac791a, inset -5px -5px 5px #d49621;
   }
 
   .neu-button-error {

@@ -3,13 +3,13 @@ import { motion } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import React from 'react';
 
-interface ServiceHeroProps {
+interface ContactHeaderProps {
   imageSrc: string | StaticImageData;
   title: string;
   subtitle: string;
 }
 
-const ServiceHero: React.FC<ServiceHeroProps> = ({ imageSrc, title, subtitle }) => {
+const ContactHeader: React.FC<ContactHeaderProps> = ({ imageSrc, title, subtitle }) => {
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -31,7 +31,7 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ imageSrc, title, subtitle }) 
   };
 
   return (
-    <div className="relative w-full h-[40vh] md:h-[50vh] lg:h-[60vh]">
+    <div className="relative w-full h-[30vh] md:h-[35vh] lg:h-[40vh]">
       <Image
         src={imageSrc}
         alt={title}
@@ -40,20 +40,20 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ imageSrc, title, subtitle }) 
         priority
       />
       <div className="absolute inset-0 bg-gradient-to-t from-neu-dark via-neu-dark/70 to-transparent"></div>
-      <motion.div 
-        className="absolute inset-0 flex flex-col justify-end p-6 md:p-12 lg:p-16 mx-auto"
+      <motion.div
+        className="absolute inset-0 flex flex-col justify-center p-6 md:p-8 lg:p-12 mx-auto"
         variants={containerVariants}
         initial="hidden"
         animate="visible"
       >
-        <motion.h1 
-          className="text-3xl md:text-4xl lg:text-5xl font-bold text-neu-yellow mb-4 text-neu-text-raised leading-tight"
+        <motion.h1
+          className="text-2xl md:text-3xl lg:text-4xl font-bold text-neu-yellow mb-2 text-neu-text-raised leading-tight"
           variants={itemVariants}
         >
           {title}
         </motion.h1>
-        <motion.p 
-          className="text-base md:text-lg lg:text-xl text-gray-300 max-w-6xl font-medium leading-relaxed"
+        <motion.p
+          className="text-sm md:text-base lg:text-lg text-gray-300 max-w-3xl font-medium leading-relaxed"
           variants={itemVariants}
         >
           {subtitle}
@@ -63,4 +63,4 @@ const ServiceHero: React.FC<ServiceHeroProps> = ({ imageSrc, title, subtitle }) 
   );
 };
 
-export default ServiceHero;
+export default ContactHeader;

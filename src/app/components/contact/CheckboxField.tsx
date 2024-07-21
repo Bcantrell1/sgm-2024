@@ -1,3 +1,5 @@
+import React from 'react';
+
 type CheckboxFieldProps = {
   label: string;
   id: string;
@@ -7,8 +9,8 @@ type CheckboxFieldProps = {
 
 export default function CheckboxField({ label, id, checked, onChange }: CheckboxFieldProps) {
   return (
-    <div>
-      <label htmlFor={id} className="flex items-center">
+    <div className="mb-4">
+      <label htmlFor={id} className="flex items-center text-sm sm:text-base cursor-pointer">
         <input
           type="checkbox"
           id={id}
@@ -16,8 +18,8 @@ export default function CheckboxField({ label, id, checked, onChange }: Checkbox
           onChange={(e) => onChange(e.target.checked)}
           className="sr-only"
         />
-        <span className={`neu-checkbox cursor-pointer ${checked ? 'neu-checkbox-checked' : ''}`}></span>
-        <span className="ml-2 text-sm text-neu-yellow">{label}</span>
+        <span className={`neu-checkbox w-5 h-5 sm:w-6 sm:h-6 ${checked ? 'neu-checkbox-checked' : ''}`}></span>
+        <span className="ml-2 sm:ml-3 text-neu-yellow">{label}</span>
       </label>
     </div>
   );

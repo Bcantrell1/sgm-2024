@@ -48,7 +48,7 @@ const VideoSection: React.FC<VideoSectionProps> = ({
         <h2 className="text-3xl md:text-4xl font-bold text-neu-yellow text-neu-text-raised mb-4">
           {title}
         </h2>
-        <p className="text-white text-lg mb-6 max-w-2xl leading-relaxed">
+        <p className="text-white text-lg mb-6 max-w-3xl leading-relaxed">
           {subtitle}
         </p>
         <Link href={buttonLink} passHref>

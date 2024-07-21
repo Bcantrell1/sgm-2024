@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion';
 import React, { FormEvent, useState } from 'react';
 import CheckboxField from './CheckboxField';
 import InputField from './InputField';
@@ -24,7 +25,6 @@ export default function ContactForm({ setSubmitMessage }: ContactFormProps) {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitMessage('');
-
     const response = await fetch('/api/submit-contact', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -34,7 +34,6 @@ export default function ContactForm({ setSubmitMessage }: ContactFormProps) {
         message,
       }),
     });
-
     if (response.ok) {
       setSubmitMessage('Thank you for your submission. We will contact you soon!');
       // Reset form
@@ -43,13 +42,35 @@ export default function ContactForm({ setSubmitMessage }: ContactFormProps) {
     } else {
       setSubmitMessage('There was an error submitting your request. Please try again.');
     }
-
     setIsSubmitting(false);
   };
 
+  const formVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        staggerChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: { opacity: 1, y: 0 },
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <motion.form
+      onSubmit={handleSubmit}
+      className="space-y-6 sm:space-y-8 max-w-4xl mx-auto p-4 sm:p-6 lg:p-8"
+      variants={formVariants}
+      initial="hidden"
+      animate="visible"
+    >
+      <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6" variants={itemVariants}>
         <InputField
           label="Name"
           type="text"
@@ -66,39 +87,47 @@ export default function ContactForm({ setSubmitMessage }: ContactFormProps) {
           onChange={setNumber}
           placeholder="(123) 456-7890"
         />
-      </div>
-      <InputField
-        label="Email"
-        type="email"
-        id="email"
-        value={email}
-        onChange={setEmail}
-        placeholder="johndoe@example.com"
-      />
-      <RadioGroup
-        label="Type of Work"
-        options={['Turf', 'Pavers', 'Travertine', 'Putting Green', 'Other']}
-        selected={workType}
-        onChange={setWorkType}
-      />
-      {workType === 'Turf' && (
-        <CheckboxField
-          label="Do you have pets?"
-          id="hasPets"
-          checked={hasPets}
-          onChange={setHasPets}
+      </motion.div>
+      <motion.div variants={itemVariants}>
+        <InputField
+          label="Email"
+          type="email"
+          id="email"
+          value={email}
+          onChange={setEmail}
+          placeholder="johndoe@example.com"
         />
+      </motion.div>
+      <motion.div variants={itemVariants}>
+        <RadioGroup
+          label="Type of Work"
+          options={['Turf', 'Pavers', 'Travertine', 'Putting Green', 'Other']}
+          selected={workType}
+          onChange={setWorkType}
+        />
+      </motion.div>
+      {workType === 'Turf' && (
+        <motion.div variants={itemVariants}>
+          <CheckboxField
+            label="Do you have pets?"
+            id="hasPets"
+            checked={hasPets}
+            onChange={setHasPets}
+          />
+        </motion.div>
       )}
-      <TextareaField
-        label="Message"
-        id="message"
-        value={message}
-        onChange={setMessage}
-        placeholder="Tell us about your project..."
-      />
-      <div className="text-center">
+      <motion.div variants={itemVariants}>
+        <TextareaField
+          label="Message"
+          id="message"
+          value={message}
+          onChange={setMessage}
+          placeholder="Tell us about your project..."
+        />
+      </motion.div>
+      <motion.div className="text-center" variants={itemVariants}>
         <SubmitButton isSubmitting={isSubmitting} />
-      </div>
-    </form>
+      </motion.div>
+    </motion.form>
   );
 }
