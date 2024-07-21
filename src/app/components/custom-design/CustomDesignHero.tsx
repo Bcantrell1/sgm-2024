@@ -46,7 +46,7 @@ const CustomDesignHero: React.FC<CustomDesignHeroProps> = ({ imageSrc, title, su
       <Image
         src={imageSrc}
         alt="Custom Design Background"
-        layout="fill"
+				fill
         quality={100}
         priority
 				className='object-cover'
@@ -67,13 +67,13 @@ const CustomDesignHero: React.FC<CustomDesignHeroProps> = ({ imageSrc, title, su
             variants={itemVariants}
           >
             <motion.h1 
-              className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-200 mb-6"
+              className="text-3xl sm:text-4xl text-center md:text-left md:text-5xl lg:text-7xl font-bold text-gray-200 mb-6"
               variants={itemVariants}
             >
                 {title.split(' ').map((word, index, array) => (
                 <motion.span 
                   key={index} 
-                  className={`inline-block mx-2 ${index === array.length - 1 ? "text-neu-yellow" : ""} ${index === array.length - 4 ? "text-neu-green" : ""}`}
+                  className={`inline-block mx-1 md:mx-2 ${index === array.length - 1 ? "text-neu-yellow" : ""} ${index === array.length - 4 ? "text-neu-green" : ""}`}
                   variants={itemVariants}
                 >
                   {word.split('').map((letter, letterIndex) => (
@@ -90,13 +90,13 @@ const CustomDesignHero: React.FC<CustomDesignHeroProps> = ({ imageSrc, title, su
               ))}
             </motion.h1>
             <motion.p 
-              className="text-xl sm:text-2xl text-gray-200 mb-8 max-w-4xl"
+              className="text-xl hidden md:block sm:text-2xl text-gray-200 mb-8 max-w-4xl"
               variants={itemVariants}
             >
               {subtitle}
             </motion.p>
             <motion.div 
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col justify-center md:justify-start sm:flex-row gap-4"
               variants={itemVariants}
             >
               <button 
