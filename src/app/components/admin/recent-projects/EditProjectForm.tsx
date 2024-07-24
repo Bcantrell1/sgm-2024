@@ -1,5 +1,5 @@
-import InputField from '@/app/components/contact/InputField';
 import TextareaField from '@/app/components/contact/TextareaField';
+import InputField from '@/app/components/global/InputField';
 import { db } from '@/firebase/clientApp';
 import { RecentProject } from '@/types/RecentProject';
 import { doc, updateDoc } from 'firebase/firestore';

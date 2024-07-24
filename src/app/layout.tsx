@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import Footer from './components/Footer'
 import Header from './components/Header'
+import ProjectWizard from './components/wizard/ProjectWizard'
 import './globals.css'
 import { Providers } from './providers'
 
@@ -25,6 +26,7 @@ export default function RootLayout({
             <main className='flex-1 flex flex-col'>{children}</main>
             <Footer />
           </div>
+					<ProjectWizard />
         </Providers>
       </body>
     </html>

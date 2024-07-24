@@ -7,6 +7,11 @@ body {
   color: #ffffff;
 }
 
+@keyframes evaporate {
+  0% { transform: translateY(0px); }
+  100% { opacity: 0; transform: translateY(-30px); }
+}
+
 @layer components {
   .neu-button {
     @apply bg-neu-base text-neu-yellow font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
@@ -16,9 +21,17 @@ body {
     @apply bg-neu-green text-neu-base font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
   }
 
+	.clip-path-roof {
+    clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  }
+
 	.neu-button-green:hover {
     box-shadow: inset 5px 5px 5px #3f9443, inset -5px -5px 5px #59ca5d;
   }
+
+	.animate-evaporate {
+		animation: evaporate 500ms infinite;
+	}
 
 	.neu-button-warning {
     @apply bg-yellow-600 text-neu-base font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;

@@ -1,10 +1,10 @@
 import { motion } from 'framer-motion';
 import React, { FormEvent, useState } from 'react';
-import CheckboxField from './CheckboxField';
-import InputField from './InputField';
-import RadioGroup from './RadioGroup';
+import CheckboxField from '../global/CheckboxField';
+import InputField from '../global/InputField';
+import RadioGroup from '../global/RadioGroup';
+import TextareaField from '../global/TextareaField';
 import SubmitButton from './SubmitButton';
-import TextareaField from './TextareaField';
 
 type WorkType = 'Turf' | 'Pavers' | 'Travertine' | 'Putting Green' | 'Other';
 

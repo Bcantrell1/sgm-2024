@@ -1,3 +1,4 @@
+import { useProjectWizard } from '@/app/hooks/useProjectWizard';
 import { motion } from 'framer-motion';
 import Image, { StaticImageData } from 'next/image';
 import React from 'react';
@@ -40,6 +41,8 @@ const CustomDesignHero: React.FC<CustomDesignHeroProps> = ({ imageSrc, title, su
       transition: { duration: 0.5, ease: "easeOut" }
     }
   };
+
+	const { openWizard } = useProjectWizard();
 
   return (
     <div className="relative w-full h-[60vh] min-h-[500px] overflow-hidden">
@@ -101,13 +104,9 @@ const CustomDesignHero: React.FC<CustomDesignHeroProps> = ({ imageSrc, title, su
             >
               <button 
                 className="neu-button-warning"
+								onClick={openWizard}
               >
                 Get Started
-              </button>
-              <button 
-                className="neu-button"
-              >
-                Learn More
               </button>
             </motion.div>
           </motion.div>

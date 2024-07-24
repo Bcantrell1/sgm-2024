@@ -53,7 +53,7 @@ export default function Header() {
           </NavLink>
         </>
       ) : (
-        <div className="relative z-50" ref={dropdownRef}>
+        <div className="relative z-20" ref={dropdownRef}>
           <button 
 						className="neu-button flex items-center"
 						onClick={() => setIsServicesOpen(!isServicesOpen)}
