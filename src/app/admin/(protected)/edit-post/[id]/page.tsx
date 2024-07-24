@@ -1,7 +1,7 @@
 'use client';
 import LoadingSpinner from '@/app/components/LoadingSpinner';
-import TextareaField from '@/app/components/contact/TextareaField';
 import InputField from '@/app/components/global/InputField';
+import TextareaField from '@/app/components/global/TextareaField';
 import { db } from '@/firebase/clientApp';
 import { BlogPost } from '@/types/BlogPost';
 import { doc, getDoc, Timestamp, updateDoc } from 'firebase/firestore';

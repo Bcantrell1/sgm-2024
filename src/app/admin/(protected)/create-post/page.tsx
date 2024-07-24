@@ -1,6 +1,6 @@
 'use client';
-import TextareaField from '@/app/components/contact/TextareaField';
 import InputField from '@/app/components/global/InputField';
+import TextareaField from '@/app/components/global/TextareaField';
 import { db } from '@/firebase/clientApp';
 import { addDoc, collection, Timestamp } from 'firebase/firestore';
 import { useRouter } from 'next/navigation';

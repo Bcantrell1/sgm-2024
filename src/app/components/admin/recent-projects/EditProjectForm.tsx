@@ -1,9 +1,9 @@
-import TextareaField from '@/app/components/contact/TextareaField';
 import InputField from '@/app/components/global/InputField';
 import { db } from '@/firebase/clientApp';
 import { RecentProject } from '@/types/RecentProject';
 import { doc, updateDoc } from 'firebase/firestore';
 import { useState } from 'react';
+import TextareaField from '../../global/TextareaField';
 
 interface EditProjectFormProps {
   project: RecentProject;

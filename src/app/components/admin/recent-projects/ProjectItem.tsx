@@ -1,8 +1,8 @@
-import CheckboxField from '@/app/components/contact/CheckboxField';
 import { db } from '@/firebase/clientApp';
 import { RecentProject } from '@/types/RecentProject';
 import { doc, updateDoc } from 'firebase/firestore';
 import { useState } from 'react';
+import CheckboxField from '../../global/CheckboxField';
 import EditProjectForm from './EditProjectForm';
 import ProjectDetails from './ProjectDetails';
 
