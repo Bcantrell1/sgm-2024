@@ -51,7 +51,7 @@ export default function Header() {
           <NavLink href="/services/hardscape" className="neu-button block w-full text-center" onClick={() => setIsMenuOpen(false)}>
             Hardscape
           </NavLink>
-          <NavLink href="/services/hardscape" className="neu-button block w-full text-center" onClick={() => setIsMenuOpen(false)}>
+          <NavLink href="/services/golf-sport" className="neu-button block w-full text-center" onClick={() => setIsMenuOpen(false)}>
             Sports Area
           </NavLink>
         </>
