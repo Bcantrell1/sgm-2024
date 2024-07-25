@@ -1,5 +1,6 @@
 'use client';
 import ContactForm from '@/app/components/contact/ContactForm';
+import VideoBackgroundCTA from '@/app/components/global/VideoBackgroundCTA';
 import HardscapeFeatures from '@/app/components/services/hardscape/HardscapeFeatures';
 import HardscapeServices from '@/app/components/services/hardscape/HardscapeServices';
 import ServiceHero from '@/app/components/services/ServiceHero';
@@ -18,6 +19,11 @@ const HardscapePage: React.FC = () => {
       />
       <HardscapeServices />
       <HardscapeFeatures />
+			<VideoBackgroundCTA
+				title="Ready To Start Your Project?"
+				description="Share your ideas with us and we will ensure a competitive quote on your hardscape project!"
+				videoSrc="/videos/grass.mp4"
+			/>
       <div className='p-4 my-8'>
         <h2 className="text-3xl sm:text-4xl md:text-5xl text-neu-text-raised lg:text-6xl font-bold text-neu-yellow text-center mb-8 md:mb-12">
           <span className="text-neu-green">READY TO TRANSFORM <br/></span> YOUR OUTDOOR SPACE?

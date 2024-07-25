@@ -51,6 +51,9 @@ export default function Header() {
           <NavLink href="/services/hardscape" className="neu-button block w-full text-center" onClick={() => setIsMenuOpen(false)}>
             Hardscape
           </NavLink>
+          <NavLink href="/services/hardscape" className="neu-button block w-full text-center" onClick={() => setIsMenuOpen(false)}>
+            Sports Area
+          </NavLink>
         </>
       ) : (
         <div className="relative z-20" ref={dropdownRef}>
@@ -89,6 +92,15 @@ export default function Header() {
 						>
 							<span className="text-neu-text-raised hover:text-neu-text-pressed">
 								Hardscape
+							</span>
+						</NavLink>
+						<NavLink 
+							href="/services/golf-sport" 
+							className="block py-2 text-neu-yellow transition-all duration-200 ease-in-out" 
+							onClick={() => setIsServicesOpen(false)}
+						>
+							<span className="text-neu-text-raised hover:text-neu-text-pressed">
+								Sport Areas
 							</span>
 						</NavLink>
 					</div>

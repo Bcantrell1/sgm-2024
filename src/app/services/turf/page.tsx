@@ -1,5 +1,6 @@
 'use client';
 import ContactForm from '@/app/components/contact/ContactForm';
+import VideoBackgroundCTA from '@/app/components/global/VideoBackgroundCTA';
 import ServiceHero from '@/app/components/services/ServiceHero';
 import InstallationProcess from '@/app/components/services/turf/InstallationProcess';
 import Installers from '@/app/components/services/turf/Installers';
@@ -23,6 +24,11 @@ const TurfPage: React.FC = () => {
       <div className="container mx-auto px-4 py-8">
 				<Installers />
       </div>
+			<VideoBackgroundCTA
+				title="Let's Get Your Project Started"
+				description="Help us get more familiar with your project needs so we can deliver a product you love!"
+				videoSrc="/videos/grass.mp4"
+			/>
 			<InstallationProcess />
 			<VideoSection
 				title="Bring Your Vision to Life"

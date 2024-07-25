@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import CustomDesignHero from '../components/custom-design/CustomDesignHero';
 import DesignProcess from '../components/custom-design/DesignProcess';
 import PortfolioShowcase from '../components/custom-design/PortfolioShowcase';
+import VideoBackgroundCTA from '../components/global/VideoBackgroundCTA';
 
 const CustomDesignPage: React.FC = () => {
   const [submitMessage, setSubmitMessage] = useState('');
@@ -18,6 +19,11 @@ const CustomDesignPage: React.FC = () => {
       />
       <DesignProcess />
       <PortfolioShowcase />
+			<VideoBackgroundCTA
+				title="Let`s Start Your Custom Design"
+				description="Our team create's the landscape of your dreams and ensures the timeline that works best for you!"
+				videoSrc="/videos/grass.mp4"
+			/>
       <div className='p-4 my-8'>
         <h2 className="text-3xl sm:text-4xl md:text-5xl text-neu-text-raised lg:text-6xl font-bold text-neu-yellow text-center mb-8 md:mb-12">
           <span className="text-neu-green">READY TO START YOUR <br/></span> CUSTOM DESIGN JOURNEY?
