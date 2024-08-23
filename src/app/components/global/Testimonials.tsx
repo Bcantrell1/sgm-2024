@@ -71,7 +71,7 @@ const Testimonials: React.FC = () => {
   return (
     <div className="py-12 px-4">
       <div className="mx-auto">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-8">
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left mb-8">
           <span className="text-neu-green">CLIENT</span> TESTIMONIALS
         </h2>
         <Swiper
@@ -79,6 +79,7 @@ const Testimonials: React.FC = () => {
 					 grabCursor={true}
 					 centeredSlides={true}
 					 slidesPerView={3}
+					 initialSlide={1}
 					 coverflowEffect={{
 						 rotate: 50,
 						 stretch: 0,
