@@ -17,7 +17,7 @@ export default function RecentProjects() {
   }, []);
 
   return (
-    <div className="bg-neu-base py-10 md:py-20">
+    <div className="py-10 md:py-20">
       <h2 className="text-2xl font-semibold text-gray-300 mb-4">Recent Projects</h2>
       <ul className="space-4 gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         {recentProjects.map((project) => (

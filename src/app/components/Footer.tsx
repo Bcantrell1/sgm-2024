@@ -21,7 +21,7 @@ export default function Footer() {
   }, []);
 
   return (
-    <footer className="bg-neu-base shadow-neumorphic-sm">
+    <footer className="bg-neu-base z-50 shadow-neumorphic-sm">
       <div className="container mx-auto px-6 py-8">
         <div className="flex flex-wrap justify-between items-center">
           <div className="w-full md:w-1/4 text-center md:text-left mb-6 md:mb-0">
@@ -48,20 +48,27 @@ export default function Footer() {
                 </svg>
               </button>
               {isServicesOpen && (
-                <div className="absolute bottom-full left-0 bg-neu-base shadow-neumorphic mt-2 py-2 px-4 rounded-md">
+                <div className="absolute bottom-full left-0 min-w-[125px] bg-neu-base shadow-neumorphic mt-2 py-2 px-4 rounded-md">
                   <Link
                     href="/services/turf"
-                    className="block text-neu-yellow py-2 transition-all duration-200 ease-in-out hover:text-white"
+                    className="block text-neu-yellow py-2 transition-all duration-200 ease-in-out hover:text-neu-text-pressed"
                     onClick={() => setIsServicesOpen(false)}
                   >
                     Turf
                   </Link>
                   <Link
                     href="/services/hardscape"
-                    className="block text-neu-yellow py-2 transition-all duration-200 ease-in-out hover:text-white"
+                    className="block text-neu-yellow py-2 transition-all duration-200 ease-in-out hover:text-neu-text-pressed"
                     onClick={() => setIsServicesOpen(false)}
                   >
                     Hardscape
+                  </Link>
+									<Link
+                    href="/services/golf-sport"
+                    className="block text-neu-yellow py-2 transition-all duration-200 ease-in-out hover:text-neu-text-pressed"
+                    onClick={() => setIsServicesOpen(false)}
+                  >
+                    Sport Areas
                   </Link>
                 </div>
               )}
