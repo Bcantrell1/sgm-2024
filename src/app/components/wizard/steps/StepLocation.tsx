@@ -47,8 +47,9 @@ const StepLocation: React.FC<StepProps> = ({ formData, updateFormData }) => {
             id="locationSize"
             value={formData.location}
             onChange={handleLocationChange}
-            placeholder="e.g., 20ft x 30ft or 600 sq ft"
+            placeholder="example: 20ft x 30ft or 600 sq ft"
           />
+					<p className='text-gray-400 italic text-sm'>** Currently Accepting Projects over 300sqft **</p>
         </div>
       ) : (
         <div className="mt-4 p-4 neu-card rounded-lg">

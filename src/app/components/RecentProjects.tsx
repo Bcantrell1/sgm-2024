@@ -18,7 +18,7 @@ export default function RecentProjects() {
 
   return (
     <div className="py-10 md:py-20">
-			<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-right mb-8">
+			<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8">
           RECENT <span className="text-neu-green">PROJECTS</span>
         </h2>
       <ul className="space-4 gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
@@ -34,7 +34,7 @@ export default function RecentProjects() {
 						</div>
 						<div className='flex flex-col flex-1 h-auto px-6 py-4'>
 							<p className="text-lg font-medium text-neu-yellow">{project.title}</p>
-							<p className="text-md mb-2 text-gray-300">{project.description}</p>
+							{/* <p className="text-md mb-2 text-gray-300">{project.description}</p> */}
 							<p className="text-xs flex-grow flex items-end text-gray-400">Project Completed: {new Date(project.completionDate).toLocaleDateString()}</p>
 						</div>
           </li>

@@ -38,7 +38,9 @@ export default function CarouselWrapper() {
 
   return (
     <Suspense fallback={<CarouselLoadingFallback />}>
-      <Carousel imagesPromise={imagesPromise} />
+			<div className='py-20'>
+				<Carousel imagesPromise={imagesPromise} />
+			</div>
     </Suspense>
   );
 }

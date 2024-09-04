@@ -1,6 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 import {
 	Card,
 	CardContent,
@@ -9,8 +8,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from "@/components/ui/card";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
-import { Check, Linkedin } from "lucide-react";
+import { InstagramLogoIcon } from "@radix-ui/react-icons";
+import { Check } from "lucide-react";
 import Image from "next/image";
 
 export const HeroCards = () => {
@@ -59,19 +58,19 @@ export const HeroCards = () => {
           <div>
             <a
               rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa"
+              href="https://www.instagram.com/sgm_scapes/"
               target="_blank"
-              className={buttonVariants({
+              className={`${buttonVariants({
                 variant: "ghost",
                 size: "sm",
-              })}
+              })} hover:bg-neu-light hover:shadow-neumorphic-inset`}
             >
-              <span className="sr-only">Github icon</span>
-              <GitHubLogoIcon className="w-5 h-5" />
+              <span className="sr-only">Instagram icon</span>
+              <InstagramLogoIcon className="w-5 h-5 text-neu-green" />
             </a>
-            <a
+            {/* <a
               rel="noreferrer noopener"
-              href="https://twitter.com/leo_mirand4"
+              href="#"
               target="_blank"
               className={buttonVariants({
                 variant: "ghost",
@@ -88,19 +87,27 @@ export const HeroCards = () => {
                 <title>X</title>
                 <path d="M18.901 1.153h3.68l-8.04 9.19L24 22.846h-7.406l-5.8-7.584-6.638 7.584H.474l8.6-9.83L0 1.154h7.594l5.243 6.932ZM17.61 20.644h2.039L6.486 3.24H4.298Z" />
               </svg>
-            </a>
+            </a> */}
 
             <a
               rel="noreferrer noopener"
-              href="https://www.linkedin.com/in/leopoldo-miranda/"
+              href="https://www.facebook.com/profile.php?id=100057789394406"
               target="_blank"
-              className={buttonVariants({
+              className={`${buttonVariants({
                 variant: "ghost",
                 size: "sm",
-              })}
+              })} hover:bg-neu-light hover:shadow-neumorphic-inset`}
             >
               <span className="sr-only">Linkedin icon</span>
-              <Linkedin size="20" />
+							<svg 
+								role="img"
+								viewBox="0 0 24 24"
+								xmlns="http://www.w3.org/2000/svg"
+								className="fill-foreground w-5 h-5 "
+								>
+									<title>Facebook</title>
+									<path fill="#3f9443" d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.707 0-1.259.096-1.675.309a1.686 1.686 0 0 0-.679.622c-.258.42-.374.995-.374 1.752v1.297h3.919l-.386 2.103-.287 1.564h-3.246v8.245C19.396 23.238 24 18.179 24 12.044c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.628 3.874 10.35 9.101 11.647Z"/>
+							</svg>
             </a>
           </div>
         </CardFooter>
