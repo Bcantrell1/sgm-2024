@@ -15,13 +15,13 @@ interface Review {
 }
 
 const TestimonialCard: React.FC<Review> = ({ author_name, rating, text, relative_time_description }) => (
-  <div className="bg-neu-base shadow-neumorphic rounded-lg p-6 h-full flex flex-col">
-    <h3 className="text-xl font-semibold mb-2">{author_name}</h3>
+  <div className="bg-neu-base shadow-neumorphic rounded-lg p-4 sm:p-6 h-full flex flex-col">
+    <h3 className="text-lg sm:text-xl font-semibold mb-2">{author_name}</h3>
     <div className="flex items-center mb-2">
       {[...Array(5)].map((_, i) => (
         <svg
           key={i}
-          className={`w-5 h-5 ${i < rating ? 'text-neu-yellow' : 'text-gray-300'}`}
+          className={`w-4 h-4 sm:w-5 sm:h-5 ${i < rating ? 'text-neu-yellow' : 'text-gray-300'}`}
           fill="currentColor"
           viewBox="0 0 20 20"
         >
@@ -29,8 +29,8 @@ const TestimonialCard: React.FC<Review> = ({ author_name, rating, text, relative
         </svg>
       ))}
     </div>
-    <p className="text-gray-300 mb-4 flex-grow">{text}</p>
-    <p className="text-sm text-gray-200">{relative_time_description}</p>
+    <p className="text-gray-300 mb-4 flex-grow text-sm sm:text-base">{text}</p>
+    <p className="text-xs sm:text-sm text-gray-200">{relative_time_description}</p>
   </div>
 );
 
@@ -56,7 +56,6 @@ const Testimonials: React.FC = () => {
         setIsLoading(false);
       }
     };
-
     fetchReviews();
   }, []);
 
@@ -69,29 +68,40 @@ const Testimonials: React.FC = () => {
   }
 
   return (
-    <div className="py-12 px-4">
+    <div className="py-8 sm:py-12 md:py-24 px-4">
       <div className="mx-auto">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-left mb-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-left mb-6 sm:mb-8">
           <span className="text-neu-green">CLIENT</span> TESTIMONIALS
         </h2>
         <Swiper
-           effect={'coverflow'}
-					 grabCursor={true}
-					 centeredSlides={true}
-					 slidesPerView={3}
-					 initialSlide={1}
-					 coverflowEffect={{
-						 rotate: 50,
-						 stretch: 0,
-						 depth: 100,
-						 modifier: 1,
-						 slideShadows: true,
-					 }}
-					 pagination={true}
-					 modules={[EffectCoverflow, Pagination]}
-					 style={{
-						padding: '10px 0'
-					 }}
+          effect={'coverflow'}
+          grabCursor={true}
+          centeredSlides={true}
+					initialSlide={1}
+          coverflowEffect={{
+            rotate: 50,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: true,
+          }}
+          pagination={true}
+          modules={[EffectCoverflow, Pagination]}
+          breakpoints={{
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 20
+            },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 30
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 40
+            }
+          }}
+          className="mySwiper"
         >
           {reviews.map((review, index) => (
             <SwiperSlide key={index}>

@@ -21,7 +21,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={`${inter.className} bg-neu-base min-h-screen flex flex-col`}>
         <Providers>
-          <div className="flex-1 flex flex-col shadow-neumorphic overflow-hidden">
+          <div className="flex-1 flex flex-col shadow-neumorphic">
             <Header />
             <main className='flex-1 flex flex-col relative'>{children}</main>
             <Footer />
