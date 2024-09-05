@@ -23,19 +23,19 @@ export default function Home() {
 		'putting greens'
 	];
 	return (
-		<div className='w-full mx-auto pt-10 max-w-[1800px] px-10 h-auto'>
+		<div className='w-full mx-auto pt-10 overflow-hidden max-w-[1800px] px-6 md:px-10 h-auto'>
 			<div id="fb-root"></div>
 			<Hero />
 			<CarouselWrapper />
-			<div className="h-[20rem] flex justify-center items-center px-4">
-				<div className="text-2xl md:text-5xl lg:text-7xl max-w-[1200px] mx-auto font-normal text-gray-200">
+			<div className="h-auto py-16 lg:py-20 flex justify-center items-center px-4">
+				<div className="text-3xl h-full min-h-[165px] overflow-hidden md:text-5xl lg:text-7xl max-w-[1200px] mx-auto font-normal text-gray-200">
 					Elevating <FlipWords words={spaces} color='text-neu-yellow' />spaces
 					with premium <FlipWords words={services} color='text-neu-green' />
 				</div>
 			</div>
 			<RecentProjects />
 			<div className="flex flex-col lg:gap-x-8 xl:gap-x-12 lg:items-center">
-				<div className="lg:col-span-3">
+				<div className="lg:col-span-3 w-full">
 					<TextRevealCard
 						text="You know the project"
 						revealText="We know the industry"

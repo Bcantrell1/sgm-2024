@@ -17,8 +17,8 @@ export default function RecentProjects() {
   }, []);
 
   return (
-    <div className="py-10 md:py-20">
-			<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8">
+    <div className="py-0 md:py-20">
+			<h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-8 text-center md:text-left ">
           RECENT <span className="text-neu-green">PROJECTS</span>
         </h2>
       <ul className="space-4 gap-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">

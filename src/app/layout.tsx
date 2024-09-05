@@ -23,7 +23,7 @@ export default function RootLayout({
         <Providers>
           <div className="flex-1 flex flex-col shadow-neumorphic">
             <Header />
-            <main className='flex-1 flex flex-col relative'>{children}</main>
+            <main className='flex-1 overflow-hidden flex flex-col relative'>{children}</main>
             <Footer />
           </div>
 					<ProjectWizard />

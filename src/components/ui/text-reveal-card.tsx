@@ -15,60 +15,61 @@ export const TextRevealCard = ({
   className?: string;
 }) => {
   const [widthPercentage, setWidthPercentage] = useState(0);
-  const cardRef = useRef<HTMLDivElement | any>(null);
+  const cardRef = useRef<HTMLDivElement | null>(null);
   const [left, setLeft] = useState(0);
   const [localWidth, setLocalWidth] = useState(0);
-  const [isMouseOver, setIsMouseOver] = useState(false);
+  const [isInteracting, setIsInteracting] = useState(false);
 
   useEffect(() => {
     if (cardRef.current) {
-      const { left, width: localWidth } =
-        cardRef.current.getBoundingClientRect();
+      const { left, width: localWidth } = cardRef.current.getBoundingClientRect();
       setLeft(left);
       setLocalWidth(localWidth);
     }
   }, []);
 
-
-
-  function mouseMoveHandler(event: any) {
-    event.preventDefault();
-
-    const { clientX } = event;
+  const handleInteractionMove = (clientX: number) => {
     if (cardRef.current) {
       const relativeX = clientX - left;
       setWidthPercentage((relativeX / localWidth) * 100);
     }
-  }
+  };
 
-  function mouseLeaveHandler() {
-    setIsMouseOver(false);
+  const handleInteractionStart = () => {
+    setIsInteracting(true);
+  };
+
+  const handleInteractionEnd = () => {
+    setIsInteracting(false);
     setWidthPercentage(0);
-  }
-  function mouseEnterHandler() {
-    setIsMouseOver(true);
-  }
-  function touchMoveHandler(event: React.TouchEvent<HTMLDivElement>) {
+  };
+
+  const handleMouseMove = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
-    const clientX = event.touches[0]!.clientX;
-    if (cardRef.current) {
-      const relativeX = clientX - left;
-      setWidthPercentage((relativeX / localWidth) * 100);
+    handleInteractionMove(event.clientX);
+  };
+
+  const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    event.preventDefault();
+    const touch = event.touches[0];
+    if (touch) {
+      handleInteractionMove(touch.clientX);
     }
-  }
+  };
 
   const rotateDeg = (widthPercentage - 50) * 0.1;
+
   return (
     <div
-      onMouseEnter={mouseEnterHandler}
-      onMouseLeave={mouseLeaveHandler}
-      onMouseMove={mouseMoveHandler}
-      onTouchStart={mouseEnterHandler}
-      onTouchEnd={mouseLeaveHandler}
-      onTouchMove={touchMoveHandler}
+      onMouseEnter={handleInteractionStart}
+      onMouseLeave={handleInteractionEnd}
+      onMouseMove={handleMouseMove}
+      onTouchStart={handleInteractionStart}
+      onTouchEnd={handleInteractionEnd}
+      onTouchMove={handleTouchMove}
       ref={cardRef}
       className={cn(
-        "w-full min-w-[600px] rounded-lg h-full p-8 relative overflow-hidden",
+        "w-full rounded-lg h-full p-4 md:p-8 relative overflow-hidden",
         className
       )}
     >
@@ -78,9 +79,10 @@ export const TextRevealCard = ({
         <motion.div
           style={{
             width: "100%",
+            overflow: 'hidden'
           }}
           animate={
-            isMouseOver
+            isInteracting
               ? {
                   opacity: widthPercentage > 0 ? 1 : 0,
                   clipPath: `inset(0 ${100 - widthPercentage}% 0 0)`,
@@ -89,14 +91,14 @@ export const TextRevealCard = ({
                   clipPath: `inset(0 ${100 - widthPercentage}% 0 0)`,
                 }
           }
-          transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
-          className="absolute bg-[#252525] z-20  will-change-transform"
+          transition={isInteracting ? { duration: 0 } : { duration: 0.4 }}
+          className="absolute bg-[#252525] z-20 overflow-hidden will-change-transform"
         >
           <p
             style={{
               textShadow: "4px 4px 15px rgba(0,0,0,0.5)",
             }}
-            className="text-base sm:text-[3rem] py-10 font-bold text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300"
+            className="text-center text-2xl md:text-[4rem] py-10 font-bold text-white bg-clip-text text-transparent bg-gradient-to-b from-white to-neutral-300"
           >
             {revealText}
           </p>
@@ -107,12 +109,12 @@ export const TextRevealCard = ({
             rotate: `${rotateDeg}deg`,
             opacity: widthPercentage > 0 ? 1 : 0,
           }}
-          transition={isMouseOver ? { duration: 0 } : { duration: 0.4 }}
+          transition={isInteracting ? { duration: 0 } : { duration: 0.4 }}
           className="h-40 w-[8px] bg-gradient-to-b from-transparent via-yellow-600 to-transparent absolute z-50 will-change-transform"
         ></motion.div>
 
-        <div className=" overflow-hidden [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">
-          <p className="text-base sm:text-[3rem] py-10 font-bold bg-clip-text text-transparent bg-[#4caf50]">
+        <div className="overflow-hidden w-full [mask-image:linear-gradient(to_bottom,transparent,white,transparent)]">
+          <p className="text-2xl text-center md:text-[4rem] py-10 font-bold bg-clip-text text-transparent bg-[#4caf50]">
             {text}
           </p>
           <MemoizedStars />

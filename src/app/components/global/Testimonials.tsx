@@ -70,7 +70,7 @@ const Testimonials: React.FC = () => {
   return (
     <div className="py-8 sm:py-12 md:py-24 px-4">
       <div className="mx-auto">
-        <h2 className="text-2xl text-right sm:text-3xl md:text-4xl lg:text-5xl font-bold text-left mb-6 sm:mb-8">
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center md:text-left mb-6 sm:mb-8">
           <span className="text-neu-green">CLIENT</span> TESTIMONIALS
         </h2>
         <Swiper

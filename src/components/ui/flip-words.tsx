@@ -1,18 +1,18 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useCallback, useEffect, useState } from "react";
 
 export const FlipWords = ({
   words,
   duration = 3000,
   className,
-	color
+  color
 }: {
   words: string[];
   duration?: number;
   className?: string;
-	color?: string;
+  color?: string;
 }) => {
   const [currentWord, setCurrentWord] = useState(words[0]);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
@@ -53,13 +53,13 @@ export const FlipWords = ({
         exit={{
           opacity: 0,
           y: -40,
-          x: 40,
+          x: 0,
           filter: "blur(8px)",
-          scale: 2,
+          scale: 1.2,
           position: "absolute",
         }}
         className={cn(
-          `z-10 inline-block relative text-left ${color} px-2`,
+          `z-10 inline-block relative text-left ${color}`,
           className
         )}
         key={currentWord}
