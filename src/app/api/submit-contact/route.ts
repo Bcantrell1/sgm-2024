@@ -1,6 +1,6 @@
-import { db } from '@/firebase/clientApp';
+// import { db } from '@/firebase/clientApp';
 import sgMail from '@sendgrid/mail';
-import { addDoc, collection } from 'firebase/firestore';
+// import { addDoc, collection } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
@@ -18,7 +18,7 @@ async function sendEmail(body: ContactFormData) {
   const msg = {
     to: process.env.EMAIL_TO as string,
     from: process.env.EMAIL_FROM as string,
-    subject: 'New Client Request',
+    subject: 'Contact Page Inquiry',
     text: `
       Name: ${body.name}
       Phone: ${body.number}
@@ -28,7 +28,7 @@ async function sendEmail(body: ContactFormData) {
       Message: ${body.message}
     `,
     html: `
-      <h1>New Client Request</h1>
+      <h1>Contact Page Inquiry</h1>
       <p><strong>Name:</strong> ${body.name}</p>
       <p><strong>Phone:</strong> ${body.number}</p>
       <p><strong>Email:</strong> ${body.email}</p>
@@ -60,16 +60,16 @@ export async function POST(request: Request) {
     }
 
     // Add to Firestore
-    try {
-      await addDoc(collection(db, "clientRequests"), {
-        ...body,
-        status: 'pending',
-        date: new Date().toISOString(),
-      });
-    } catch (error) {
-      console.error('Firestore error:', error);
-      return NextResponse.json({ message: 'Error saving to database' }, { status: 500 });
-    }
+    // try {
+    //   await addDoc(collection(db, "clientRequests"), {
+    //     ...body,
+    //     status: 'pending',
+    //     date: new Date().toISOString(),
+    //   });
+    // } catch (error) {
+    //   console.error('Firestore error:', error);
+    //   return NextResponse.json({ message: 'Error saving to database' }, { status: 500 });
+    // }
 
     // Send email
     try {

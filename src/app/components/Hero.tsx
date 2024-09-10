@@ -10,9 +10,9 @@ const Hero = () => {
 				<div className="text-4xl md:text-6xl font-bold">
 					<h1 className="inline">
 						<span className="inline bg-gradient-to-r from-[#ac791a] to-[#fef9c3] text-transparent bg-clip-text">
-							Samson`s
+							SGM
 						</span>{" "}
-						Grounds Maintenance
+						Scapes<br/>
 					</h1>{" "}
 					<h2 className="inline">
 						<span className="inline bg-gradient-to-r from-[#3f9443] via-[#59ca5d] to-[#bbf7d0] text-transparent bg-clip-text">
@@ -23,8 +23,7 @@ const Hero = () => {
 				</div>
 
 				<p className="text-xl text-gray-300 md:w-10/12 mx-auto lg:mx-0">
-					Let`s get started on that project you`ve been talking about.
-					We know explaining your project can be tough; We make it easy!
+					Design ideas, and different hardscape material placement can be tough to imagine. Luckily we have a big imagination. We`re here to help.
 				</p>
 
 				<div className="space-y-4 md:space-y-0 md:space-x-4">

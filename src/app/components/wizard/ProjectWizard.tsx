@@ -3,7 +3,7 @@ import { useProjectWizard } from '@/app/hooks/useProjectWizard';
 import { FormData } from '@/types/Wizard';
 import { XMarkIcon } from '@heroicons/react/24/solid';
 import NextImage from 'next/image';
-import React, { useState } from 'react';
+import React, { FormEvent, useState } from 'react';
 import Stepper from '../global/Stepper';
 import StepCustomer from './steps/StepCustomer';
 import StepDetails from './steps/StepDetails';
@@ -72,10 +72,20 @@ const ProjectWizard: React.FC = () => {
     setFormData(prevData => ({ ...prevData, [step]: data }));
   };
 
-	const handleSubmit = () => {
+	const handleSubmit = async (e: FormEvent) => {
     if (isStepValid(totalSteps - 1)) {
-      console.log('Form submitted with data:', formData);
-      setCurrentStep(totalSteps);
+			e.preventDefault();
+			const response = await fetch('/api/submit-wizard', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify(formData)
+			})
+			if(response.ok) {
+				console.log('Form submitted with data:', formData);
+				setCurrentStep(totalSteps);
+			} else {
+				console.log('You failed bitch.')
+			}
     }
   };
 

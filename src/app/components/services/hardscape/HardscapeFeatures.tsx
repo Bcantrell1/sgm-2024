@@ -82,7 +82,7 @@ const HardscapeFeatures: React.FC = () => {
   const features = [
     {
       title: "CUSTOM DESIGNS",
-      description: "Our expert designers create unique hardscape solutions tailored to your specific needs and aesthetic preferences."
+      description: "We never recycle designs, every project is a completely custom and unique solution tailored to your needs and aesthetic preferences."
     },
     {
       title: "QUALITY MATERIALS",

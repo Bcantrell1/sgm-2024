@@ -11,6 +11,7 @@ import {
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
 import { Check } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export const HeroCards = () => {
   return (
@@ -49,8 +50,7 @@ export const HeroCards = () => {
 
         <CardContent className="text-center pb-2">
           <p className="text-gray-200">
-            I really enjoy taking ideas and making them functional projects that
-            exceeds expectations
+						We love what we do. Making it a breeze to take your wishes, and exceed expectations on all projects.
           </p>
         </CardContent>
 
@@ -161,6 +161,7 @@ export const HeroCards = () => {
 
       {/* Service */}
       <Card className="absolute w-[350px] -right-[10px] bottom-[35px] border-none bg-neu-base shadow-neumorphic">
+				<Link href="/services/turf">
         <CardHeader className="space-y-1 flex md:flex-row justify-start items-start gap-4">
           <div className="mt-1 bg-primary/20 p-1 rounded-2xl">
 						<Image src="/grass.png" alt="grass" width={100} height={100} />
@@ -172,6 +173,7 @@ export const HeroCards = () => {
             </CardDescription>
           </div>
         </CardHeader>
+				</Link>
       </Card>
     </div>
   );

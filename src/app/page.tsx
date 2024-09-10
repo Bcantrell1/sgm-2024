@@ -17,13 +17,13 @@ export default function Home() {
 	];
 	
 	const services = [
-		'artificial turf',
 		'hardscapes',
-		'playgrounds',
-		'putting greens'
+		'artificial turf',
+		'turf',
+		'putting greens',
 	];
 	return (
-		<div className='w-full mx-auto pt-10 overflow-hidden max-w-[1800px] px-6 md:px-10 h-auto'>
+		<div className='w-full mx-auto pt-10 max-w-[1800px] px-6 md:px-10 h-auto'>
 			<div id="fb-root"></div>
 			<Hero />
 			<CarouselWrapper />
@@ -38,7 +38,7 @@ export default function Home() {
 				<div className="lg:col-span-3 w-full">
 					<TextRevealCard
 						text="You know the project"
-						revealText="We know the industry"
+						revealText="We have the solution"
 					>
 					</TextRevealCard>
 				</div>
