@@ -1,3 +1,4 @@
+//@ts-ignore
 'use client';
 import React, { useEffect, useState } from 'react';
 import 'swiper/css';
@@ -87,6 +88,10 @@ const Testimonials: React.FC = () => {
           }}
           pagination={true}
           modules={[EffectCoverflow, Pagination]}
+					style={{
+					// @ts-ignore
+						"--swiper-pagination-color": "#ac791a",
+					}}
           breakpoints={{
             320: {
               slidesPerView: 1,
