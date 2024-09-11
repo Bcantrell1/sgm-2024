@@ -42,7 +42,8 @@ export default function Header() {
 
   const NavItems: React.FC<NavItemsProps> = ({ isMobile }) => (
     <>
-      <NavLink href="/blog" className={isMobile ? "neu-button block w-full text-center" : "neu-button"} onClick={() => isMobile && setIsMenuOpen(false)}>News</NavLink>
+      <NavLink href="/" className={isMobile ? "neu-button block w-full text-center" : "neu-button"} onClick={() => isMobile && setIsMenuOpen(false)}>Home</NavLink>
+      {/* <NavLink href="/blog" className={isMobile ? "neu-button block w-full text-center" : "neu-button"} onClick={() => isMobile && setIsMenuOpen(false)}>News</NavLink> */}
       {isMobile ? (
         <>
           <NavLink href="/services/turf" className="neu-button block w-full text-center" onClick={() => setIsMenuOpen(false)}>

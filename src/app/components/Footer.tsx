@@ -28,7 +28,8 @@ export default function Footer() {
             <p className="text-neu-yellow">&copy; 2024 SGM. All rights reserved.</p>
           </div>
           <div className="w-full md:w-2/4 flex justify-center space-x-6 mb-6 md:mb-0">
-            <Link href="/blog" className="hover:text-white text-neu-yellow transition-colors duration-300">News</Link>
+            <Link href="/" className="hover:text-white text-neu-yellow transition-colors duration-300">Home</Link>
+            {/* <Link href="/blog" className="hover:text-white text-neu-yellow transition-colors duration-300">News</Link> */}
             <div className="relative" ref={dropdownRef}>
               <button
                 className="hover:text-white text-neu-yellow transition-colors duration-300 flex items-center"
