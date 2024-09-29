@@ -11,7 +11,6 @@ html {
   scroll-behavior: smooth;
 }
 
-
 @keyframes evaporate {
   0% { transform: translateY(0px); }
   100% { opacity: 0; transform: translateY(-30px); }
@@ -27,16 +26,17 @@ html {
   height: 400px;
   filter: blur(150px);
   animation: shadow-slide infinite 4s linear alternate;
+  will-change: transform, background-color;
 }
 
 @keyframes shadow-slide {
   from {
     background: hsl(113, 100%, 20%);
-    right: 460px;
+    transform: translateX(300px);
   }
   to {
     background: hsl(113, 100%, 80%);
-    right: 160px;
+    transform: translateX(0);
   }
 }
 
@@ -48,6 +48,10 @@ html {
   .neu-button-green {
     @apply bg-neu-green text-neu-base font-semibold py-2 px-4 rounded-lg shadow-neumorphic-sm hover:shadow-neumorphic-inset transition-all duration-300;
   }
+
+	.mySwiper {
+		padding: 0 8px !important;
+	}
 
 	.clip-path-roof {
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);

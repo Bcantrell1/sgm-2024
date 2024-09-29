@@ -123,7 +123,7 @@ export default function HeroVideoDialog({
               <motion.button className="absolute -top-16 right-0 text-white text-xl bg-neutral-900/50 ring-1 backdrop-blur-md rounded-full p-2 dark:bg-neutral-100/50 dark:text-black">
                 <XIcon className="size-5" />
               </motion.button>
-              <div className="size-full border-2 border-white rounded-2xl overflow-hidden isolate z-[1] relative">
+              <div className="size-full border-2 border-green-500 rounded-2xl overflow-hidden isolate z-[1] relative">
                 <iframe
                   src={videoSrc}
                   className="size-full rounded-2xl"

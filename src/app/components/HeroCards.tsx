@@ -26,12 +26,12 @@ export const HeroCards = () => {
 					/>
 
           <div className="flex flex-col">
-            <CardTitle className="text-lg text-neu-yellow">John Doe</CardTitle>
-            <CardDescription>@john_doe</CardDescription>
+            <CardTitle className="text-lg text-neu-yellow">Hardscape &<br/> Outdoor Kitchens</CardTitle>
+            {/* <CardDescription>@john_doe</CardDescription> */}
           </div>
         </CardHeader>
 
-        <CardContent className="text-gray-200">Could not be happier with my yard!</CardContent>
+        <CardContent className="text-gray-200">Custom hardscape and outdoor kitchen designs</CardContent>
       </Card>
 
       {/* Team */}
@@ -50,7 +50,7 @@ export const HeroCards = () => {
 
         <CardContent className="text-center pb-2">
           <p className="text-gray-200">
-						We love what we do. Making it a breeze to take your wishes, and exceed expectations on all projects.
+					Passionate about transforming outdoor spaces. Were committed to turning your vision into a reality that surpasses your expectations.
           </p>
         </CardContent>
 
@@ -114,7 +114,7 @@ export const HeroCards = () => {
       </Card>
 
       {/* Pricing */}
-      <Card className="absolute top-[150px] left-[50px] w-72 border-none bg-neu-base shadow-neumorphic">
+      <Card className="absolute top-[175px] left-[50px] w-72 border-none bg-neu-base shadow-neumorphic">
         <CardHeader>
           <CardTitle className="flex item-center text-neu-green justify-between">
             Free
@@ -130,7 +130,7 @@ export const HeroCards = () => {
           </div>
 
           <CardDescription>
-						Free estimates for all our local customers in Tucson and surrounding areas!
+					Complimentary consultations for Tucson residents and neighboring communities. Lets discuss your dream project!
           </CardDescription>
         </CardHeader>
 

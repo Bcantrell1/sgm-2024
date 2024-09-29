@@ -5,7 +5,7 @@ import { HeroCards } from './HeroCards';
 const Hero = () => {
 	const { openWizard } = useProjectWizard();
   return (
-		<section className="relative grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
+		<section className="grid lg:grid-cols-2 place-items-center py-20 md:py-32 gap-10">
 			<div className="text-center z-20 lg:text-start space-y-6">
 				<div className="text-4xl md:text-6xl font-bold">
 					<h1 className="inline">
@@ -31,12 +31,10 @@ const Hero = () => {
 				</div>
 			</div>
 
-			{/* Hero cards sections */}
 			<div className="z-20">
 				<HeroCards />
 			</div>
 
-			{/* Shadow effect */}
 			<div className="shadow_bg"></div>
 		</section>
   );
