@@ -22,6 +22,8 @@ export default function RootLayout({
     <html lang="en">
 			<GoogleTagManager gtmId="GTM-MP7GWM2" />
       <body className={`${inter.className} bg-neu-base min-h-screen flex flex-col`}>
+			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MP7GWM2"
+			height="0" width="0" style={{display: "none", visibility: "hidden"}}></iframe></noscript>
         <Providers>
           <div className="flex-1 flex flex-col shadow-neumorphic">
             <Header />
