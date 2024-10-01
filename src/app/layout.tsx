@@ -1,3 +1,4 @@
+import { GoogleTagManager } from '@next/third-parties/google'
 import { Inter } from 'next/font/google'
 import Footer from './components/Footer'
 import Header from './components/Header'
@@ -19,6 +20,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+			<GoogleTagManager gtmId="GTM-MP7GWM2" />
       <body className={`${inter.className} bg-neu-base min-h-screen flex flex-col`}>
         <Providers>
           <div className="flex-1 flex flex-col shadow-neumorphic">
