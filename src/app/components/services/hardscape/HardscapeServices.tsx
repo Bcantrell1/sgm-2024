@@ -22,6 +22,16 @@ const HardscapeServices: React.FC = () => {
       title: "Paver Patios",
       subtitle: "Create stunning outdoor living spaces with our expertly designed and installed paver patios.",
     },
+		{
+      icon: HomeIcon,
+      title: "Retaining Walls",
+      subtitle: "Build functional and attractive retaining walls to manage slopes and create usable space in your landscape.",
+    },
+    {
+      icon: SunIcon,
+      title: "Outdoor Kitchens",
+      subtitle: "Design and construct custom outdoor kitchens for the ultimate al fresco dining and entertainment experience.",
+    },
     {
       icon: SwatchIcon,
       title: "Walkways & Paths",
@@ -31,6 +41,11 @@ const HardscapeServices: React.FC = () => {
       icon: TruckIcon,
       title: "Driveways",
       subtitle: "Upgrade your home's curb appeal with a durable and stylish paver or natural stone driveway.",
+    },
+		{
+      icon: WrenchScrewdriverIcon,
+      title: "Fire Pits & Fireplaces",
+      subtitle: "Add warmth and ambiance to your outdoor space with custom-built fire pits or outdoor fireplaces.",
     },
   ];
 

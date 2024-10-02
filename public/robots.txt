@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://sgmscapes.com
+
+# Sitemaps
+Sitemap: https://sgmscapes.com/sitemap.xml

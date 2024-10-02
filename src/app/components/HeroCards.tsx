@@ -18,9 +18,10 @@ export const HeroCards = () => {
     <div className="hidden lg:flex flex-row flex-wrap gap-8 relative w-[700px] h-[500px]">
       {/* Testimonial */}
       <Card className="absolute w-[340px] -top-[15px] drop-shadow-xl bg-neu-base border-none shadow-neumorphic">
+				<Link href="/services/hardscape">
         <CardHeader className="flex flex-row items-center gap-4 pb-2">
 					<img
-						alt=""
+						alt="Brick Photo"
 						src="/bricks.png"
             className="rounded-full w-16 h-16 aspect-square object-cover"
 					/>
@@ -32,6 +33,7 @@ export const HeroCards = () => {
         </CardHeader>
 
         <CardContent className="text-gray-200">Custom hardscape and outdoor kitchen designs</CardContent>
+				</Link>
       </Card>
 
       {/* Team */}
