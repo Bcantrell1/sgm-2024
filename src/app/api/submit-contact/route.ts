@@ -1,9 +1,11 @@
 // import { db } from '@/firebase/clientApp';
-import sgMail from '@sendgrid/mail';
+// import sgMail from '@sendgrid/mail';
+import { Resend } from 'resend';
 // import { addDoc, collection } from 'firebase/firestore';
 import { NextResponse } from 'next/server';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
+const resend = new Resend(process.env.RESEND_API_KEY as string);
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
 interface ContactFormData {
   name: string;
@@ -19,14 +21,14 @@ async function sendEmail(body: ContactFormData) {
     to: process.env.EMAIL_TO as string,
     from: process.env.EMAIL_FROM as string,
     subject: 'Contact Page Inquiry',
-    text: `
-      Name: ${body.name}
-      Phone: ${body.number}
-      Email: ${body.email}
-      Work Type: ${body.workType}
-      ${body.workType === 'Turf' ? `Has Pets: ${body.hasPets ? 'Yes' : 'No'}` : ''}
-      Message: ${body.message}
-    `,
+    // text: `
+    //   Name: ${body.name}
+    //   Phone: ${body.number}
+    //   Email: ${body.email}
+    //   Work Type: ${body.workType}
+    //   ${body.workType === 'Turf' ? `Has Pets: ${body.hasPets ? 'Yes' : 'No'}` : ''}
+    //   Message: ${body.message}
+    // `,
     html: `
       <h1>Contact Page Inquiry</h1>
       <p><strong>Name:</strong> ${body.name}</p>
@@ -39,12 +41,12 @@ async function sendEmail(body: ContactFormData) {
   };
 
   try {
-    await sgMail.send(msg);
+    await resend.emails.send(msg);
   } catch (error: unknown) {
-    console.error('SendGrid error:', error);
+    console.error('Resend error:', error);
     if (error instanceof Error && 'response' in error) {
-      const sgError = error as { response: { body: any } };
-      console.error(sgError.response.body);
+      const rsError = error as { response: { body: any } };
+      console.error(rsError.response.body);
     }
     throw new Error('Failed to send email');
   }
@@ -58,18 +60,6 @@ export async function POST(request: Request) {
     if (!body.name || !body.number || !body.email || !body.workType || !body.message) {
       return NextResponse.json({ message: 'Missing required fields' }, { status: 400 });
     }
-
-    // Add to Firestore
-    // try {
-    //   await addDoc(collection(db, "clientRequests"), {
-    //     ...body,
-    //     status: 'pending',
-    //     date: new Date().toISOString(),
-    //   });
-    // } catch (error) {
-    //   console.error('Firestore error:', error);
-    //   return NextResponse.json({ message: 'Error saving to database' }, { status: 500 });
-    // }
 
     // Send email
     try {

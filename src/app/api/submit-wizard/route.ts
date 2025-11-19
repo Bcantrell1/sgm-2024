@@ -1,7 +1,9 @@
-import sgMail from '@sendgrid/mail';
+// import sgMail from '@sendgrid/mail';
+import { Resend } from 'resend';
 import { NextResponse } from 'next/server';
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
+const resend = new Resend(process.env.RESEND_API_KEY as string);
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY as string);
 
 interface FormData {
   customerType: string;
@@ -24,19 +26,19 @@ async function sendEmail(body: FormData) {
     to: process.env.EMAIL_TO as string,
     from: process.env.EMAIL_FROM as string,
     subject: 'Project Wizard Inquiry',
-    text: `
-      Customer Type: ${body.customerType}
-      Project: ${body.project}
-      Project Specifics: ${body.projectSpecifics.join(', ')}
-      Traffic: ${body.traffic}
-      Location: ${body.location}
-      Has Pets: ${body.petsTrue ? 'Yes' : 'No'}
-      Full Name: ${body.finishFormData.fullName}
-      Email: ${body.finishFormData.email}
-      Phone: ${body.finishFormData.phone}
-      Street Address: ${body.finishFormData.streetAddress}
-      Message: ${body.finishFormData.message}
-    `,
+    // text: `
+    //   Customer Type: ${body.customerType}
+    //   Project: ${body.project}
+    //   Project Specifics: ${body.projectSpecifics.join(', ')}
+    //   Traffic: ${body.traffic}
+    //   Location: ${body.location}
+    //   Has Pets: ${body.petsTrue ? 'Yes' : 'No'}
+    //   Full Name: ${body.finishFormData.fullName}
+    //   Email: ${body.finishFormData.email}
+    //   Phone: ${body.finishFormData.phone}
+    //   Street Address: ${body.finishFormData.streetAddress}
+    //   Message: ${body.finishFormData.message}
+    // `,
     html: `
       <h1>Project Wizard Inquiry</h1>
       <p><strong>Customer Type:</strong> ${body.customerType}</p>
@@ -54,12 +56,12 @@ async function sendEmail(body: FormData) {
   };
 
   try {
-    await sgMail.send(msg);
+    await resend.emails.send(msg);
   } catch (error: unknown) {
-    console.error('SendGrid error:', error);
+    console.error('Resend error:', error);
     if (error instanceof Error && 'response' in error) {
-      const sgError = error as { response: { body: any } };
-      console.error(sgError.response.body);
+      const rsError = error as { response: { body: any } };
+      console.error(rsError.response.body);
     }
     throw new Error('Failed to send email');
   }
